@@ -1,0 +1,107 @@
+
+/* App.css */
+body {
+  background-color: #000028 !important;
+  min-height: 100vh; 
+}
+ 
+.service_list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  /* background-color: white; */
+  padding: 0.5rem;
+  /* border: 1px solid black; */
+  border-radius: 10px;
+}
+
+/* CSS */
+.service_list_btn {
+  align-items: center;
+  margin: 0.5rem 0.1rem;
+  background-color: transparent;
+  border: 2px solid #0071ef;
+  border-radius: 100px;
+  box-sizing: border-box;
+  color: #0071ef;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: -apple-system, system-ui, system-ui, "Segoe UI", Roboto,
+    "Helvetica Neue", "Fira Sans", Ubuntu, Oxygen, "Oxygen Sans", Cantarell,
+    "Droid Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Lucida Grande", Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 20px;
+  max-width: 480px;
+  min-height: 40px;
+  min-width: 0px;
+  overflow: hidden;
+  padding: 0px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  touch-action: manipulation;
+  transition: background-color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    box-shadow 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s,
+    color 0.167s cubic-bezier(0.4, 0, 0.2, 1) 0s;
+  user-select: none;
+  -webkit-user-select: none;
+  vertical-align: middle;
+}
+
+.service_list_btn:hover,
+.service_list_btn:focus {
+  background-color: #0070ef1d;
+  color: #0071ef;
+}
+
+.service_list_btn:active {
+  background: #0a08af;
+  color: rgb(255, 255, 255, 0.7);
+}
+
+.service_list_btn:disabled {
+  cursor: not-allowed;
+  background: rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.App {
+  display: flex;
+}
+
+.navbar {
+  background-color: #333;
+  color: white;
+  padding: 1rem;
+  width: 100%;
+}
+
+.navbar-toggle {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+}
+
+.sidebar {
+  background-color: #f4f4f4;
+  width: 250px;
+  transition: transform 0.3s ease;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.main-content {
+  flex: 1;
+  padding: 1rem;
+}

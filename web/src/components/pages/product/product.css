@@ -1,0 +1,234 @@
+.ourProducts h1 {
+    color: #137BF0;
+    font-size: 64px;
+    margin-left: 120px;
+    font-weight: 700;
+    margin-top: 50px;
+    margin-bottom: -80px;
+}
+.dropDown {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .margin-dropdown2{
+    margin-left: 30px !important;
+  }
+.btn_search {
+    font-size: 10px;
+    width: 70% !important;
+    color: white !important;
+    font-weight: 600 !important;
+    background: rgb(2, 0, 36);
+    border-radius: 0 !important;
+    font-family: Inter;
+    background: linear-gradient(90deg,
+        rgba(19, 123, 240, 1) 0%,
+        rgba(0, 67, 114, 1) 100%);
+    margin: 0 auto;
+    display: block;
+}
+.search_btn {
+    /* background: #0071EF !important; */
+    font-size: 10px;
+    width: 80.41px;
+    padding: 1rem 1rem !important;
+    position:fixed;
+    margin: 2rem 0rem 4rem 1rem !important;
+    border-radius: 0 !important;
+    color: white !important;
+    font-weight: 600 !important;
+    background: rgb(2, 0, 36);
+    font-family: Inter;
+    line-height: 14.99px;
+    background: linear-gradient(90deg,
+        rgba(19, 123, 240, 1) 0%,
+        rgba(0, 67, 114, 1) 100%);
+  }
+.btn1 h3 {
+    color: #137BF0;
+    font-size: 18px;
+    font-family: Siemens Sans;
+}
+.btn1 {
+    background-color: #00183C;
+    border-bottom: 2px solid #137BF0;
+    padding: 10px 50px 10px 15px;
+}
+.buttonsMain {
+    margin-top: 130px;
+    margin-left: 130px;
+    margin-bottom: -80px;
+    cursor: pointer;
+    position: relative;
+}
+.dropDown {
+    background-color: #00193C;
+    width: 237px;
+    height: 270px;
+    border: 3px solid #137BF0;
+    margin-left: 1rem !important;
+    margin-top: 100px;
+    margin-bottom: -110px;
+    position: absolute;
+    z-index: 500;
+}
+.dropDown2 {
+    background-color: #00193C;
+    width: 237px;
+    height: 270px;
+    border: 3px solid #137BF0;
+    margin-left: 295px;
+    margin-top: 100px;
+    margin-bottom: -110px;
+    position: absolute;
+    z-index: 5
+}
+.dropDown3 {
+    background-color: #00193C;
+    width: 237px;
+    height: 270px;
+    border: 3px solid #137BF0;
+    margin-left: 450px;
+    margin-top: 100px;
+    margin-bottom: -110px;
+    position: absolute;
+    z-index: 5
+}
+.sfi {
+    background-color: #002E52;
+    width: 100% !important;
+    height: 41px;
+    display: flex;
+    align-items: center;
+}
+.sfi h3 {
+    color: white;
+    font-size: 15.77px;
+    font-weight: 600px;
+    margin-left: 20px;
+    font-family: Inter;
+    margin-top: 6px;
+}
+.checkbox2 {
+    display: flex;
+    flex-direction: column;
+    width: 40px;
+    color: white;
+    gap: 20px;
+    margin-top: 20px;
+}
+.il {
+    width: 180px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.il input {
+    height: 20px;
+    margin-left: 1rem;
+}
+.il label {
+    width: 500px;
+    margin-top: 6px;
+    margin-left: 2px;
+    font-family: Inter;
+    font-size: 13.77px;
+    font-weight: 600;
+}
+.theme-pagination ul {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-right: 300px;
+}
+.theme-pagination ul li a {
+    border: 2px solid white;
+    border-radius: 50%;
+}
+@media only screen and (max-width: 426px) {
+    .margin-dropdown2{
+        margin-left: 0 !important;
+    }
+    .theme-pagination ul {
+        margin-right: 110px !important;
+    }
+    .dropDown {
+        /* width: 237px;
+        height: 270px; */
+        width: 200px;
+        border: 3px solid #137BF0;
+        margin-left: 3rem !important;
+                margin-top: 100px;
+    }
+    .dropDown2 {
+        width: 180px;
+        height: 200px;
+        margin-left: 165px;
+    }
+    .dropDown3 {
+        width: 180px;
+        height: 200px;
+        margin-left: 240px;
+    }
+    .btn1 {
+        padding: 1rem;
+    }
+    .buttonsMain {
+        margin-top: 2rem;
+        margin-left: 3rem;
+    }
+    .search_btn {
+        font-size: 10px;
+        width: 70.41px;
+        padding: 1rem 1rem !important;
+        position:fixed;
+        margin: 0rem !important;}
+}
+@media only screen and (max-width: 376px) {
+    .theme-pagination ul {
+        margin-right: 80px !important;
+    }
+    .dropDown {
+        width: 200px;
+        margin-left: 0.5rem !important;
+    }
+    .dropDown2 {
+        width: 170px;
+        height: 200px;
+        margin-left: 135px;
+    }
+    .dropDown3 {
+        width: 170px;
+        height: 200px;
+        margin-left: 200px !important;
+    }
+    .buttonsMain {
+        margin-top: 4rem !important;
+        margin-left: 0.3rem !important;
+    }
+    .search_btn {
+        margin: -2rem 0rem 4rem 1rem !important;
+}
+}
+@media only screen and (max-width: 321px) {
+    .theme-pagination ul {
+        margin-right: 50px !important;
+    }
+    .dropDown2 {
+        margin-left: 115px;
+        height: 200px !important;
+    }
+    .dropDown3 {
+        width: 160px;
+        height: 200px !important;
+        margin-left: 145px !important;
+    }
+    .buttonsMain {
+        margin-top: 4rem !important;
+        margin-left: 0.3rem !important;
+    }
+}

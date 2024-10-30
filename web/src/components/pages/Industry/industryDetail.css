@@ -1,0 +1,354 @@
+.industry_detail {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.industry_detail_left {
+  color: #fff;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 32px;
+  margin: 8rem 0 0 1rem;
+  width: 520px;
+}
+.nodata_msg{
+  color: #fff;
+  font-size: 20px;
+  text-align: center ;
+  display: flex;
+  justify-content: center !important;
+}
+.industry_detail_right_img {
+  margin: 11rem 0 0 0;
+  width: 617px;
+  height: 575px;
+}
+
+/* detail  */
+.industry_detail_Cls {
+  margin: 0 7rem;
+}
+.industry_detail_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.industry_detail_Card {
+  text-align: center;
+  cursor: pointer;
+  position: relative;
+  width: 442px;
+  background: #000028;
+  border-bottom: 1px solid #137bf0;
+  color: #137bf0;
+  padding: 2rem;
+}
+
+.industry_detail_Card_active {
+  background: #092948 !important;
+}
+
+.industry_detail_Card_text {
+  color: #137bf0;
+  font-family: Inter;
+  font-style: normal;
+  line-height: 32px;
+  font-size: 25px;
+  font-weight: 700;
+}
+.industry_detail_Card_img {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  height: auto;
+}
+.industry_detail_body {
+  width: 100%;
+  padding: 2rem 0rem 0.5rem 0rem;
+}
+.container_industry_detail {
+  display: flex;
+  justify-content: flex-end;
+}
+.cross-about {
+  margin: 2rem 2rem 0 0;
+  cursor: pointer;
+}
+.contactdetails {
+  color: #fff;
+  font-family: Inter;
+  font-style: normal;
+  line-height: 37px;
+}
+.industry_detail_body_items {
+  font-size: 24px;
+  font-weight: 400;
+}
+.industry_detail_body_item1 {
+  font-size: 24px;
+}
+.industry_detail_body_item2 {
+  font-size: 24px;
+}
+.industry_detail_body_item3 {
+  font-size: 16px;
+}
+.industry_detail_body_item4 {
+  font-size: 18px;
+}
+.industry_detail_body_item5 {
+  font-size: 18px;
+}
+.bold_cls {
+  font-weight: 700;
+}
+/* detail service  */
+
+.industry_detail_service {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+.industry_detail_service_card {
+  cursor: pointer;
+  position: relative;
+  margin: 1rem 0;
+  width: 400px;
+  height: 156px;
+  background: #00183c;
+  padding: 2rem;
+}
+.industry_detail_service_text {
+  color: #137bf0;
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px;
+}
+.industry_detail_service_img {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  height: auto;
+}
+/* industy product  */
+.industry_detail_product {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 2rem 0;
+}
+
+.industry_detail_product_card {
+  margin: 1rem 0;
+  width: 300px;
+  height: 462px;
+  background: #00183c;
+}
+.industry_detail_product_img {
+  width: 300px;
+  height: 298px;
+}
+.industry_detail_product_card_bottom {
+  cursor: pointer;
+  position: relative;
+  width: 300px;
+  height: 160px;
+  background: #00183c;
+  padding: 2rem;
+}
+@media only screen and (max-width: 1441px) {
+  .industry_detail_Cls {
+    margin: 0 3rem;
+  }
+  .industry_detail_Card {
+    width: 458px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .industry_detail {
+    justify-content: space-between;
+    margin: 0 4rem;
+  }
+  .industry_detail_left {
+    width: 420px;
+  }
+  .industry_detail_right_img {
+    width: 417px;
+    height: 405px;
+  }
+
+  /* detail  */
+
+  .industry_detail_Cls {
+    margin: 0 3rem;
+  }
+  .industry_detail_Card {
+    width: 316px;
+  }
+  /* detail service  */
+  .industry_detail_service_card {
+    width: 280px;
+  }
+  .industry_detail_product_card_bottom {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .industry_detail {
+    justify-content: center;
+  }
+  .industry_detail_left {
+    width: 720px;
+  }
+  .industry_detail_right_img {
+    margin: 1rem 0 0 0;
+    width: 617px;
+    height: 575px;
+  }
+
+  /* detail  */
+  .industry_detail_Cls {
+    margin: 0 0.8rem;
+  }
+  .industry_detail_Card {
+    width: 241px;
+  }
+  .industry_detail_Card_text {
+    font-size: 21px;
+  }
+  .industry_detail_body {
+    padding: 2rem 0rem 0.5rem 0rem;
+  }
+  /* detail service  */
+  .industry_detail_service_card {
+    width: 200px;
+    height: 100px;
+  }
+  .industry_detail_service {
+    margin: 2rem 1rem;
+  }
+  .industry_detail_product {
+    margin: 2rem 1rem;
+  }
+  .industry_detail_product_card_bottom {
+    width: 300px;
+    /* height: 100px; */
+  }
+  .industry_detail_service_text {
+    font-size: 21px;
+  }
+  .industry_detail_service_img { 
+    bottom: 0.5rem;
+    right: 1rem; 
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .industry_detail_left {
+    margin: 3rem 0 0 0;
+    width: 370px;
+  }
+  .industry_detail_right_img {
+    width: 380px;
+    height: 303px;
+  }
+  /* detail  */
+
+  .industry_detail_Cls {
+    margin: 0 2rem;
+  }
+  .industry_detail_Card {
+    margin: 1rem 0rem;
+    width: 125px;
+    padding: 0.5rem 0;
+  }
+  .industry_detail_Card_text {
+    font-size: 18px;
+  }
+  /* .industry_detail_body {
+    width: 370px;
+  } */
+  .industry_detail_product {
+    justify-content: center;
+  }
+  /* detail service  */
+  .industry_detail_service_card {
+    margin: 1rem 0rem;
+    width: 370px;
+    height: 100px;
+  }
+  .industry_detail_product_card_bottom {
+    width: 300px;
+    /* height: 100px; */
+  }
+  .industry_detail_service_text {
+    font-size: 21px;
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .industry_detail_left {
+    width: 330px;
+  }
+  .industry_detail_right_img {
+    width: 330px;
+    height: 280px;
+  }
+  /* detail  */
+  .industry_detail_Card {
+    width: 109px;
+  }
+  .industry_detail_body {
+    width: 330px;
+  }
+  /* detail service  */
+  .industry_detail_service_card {
+    width: 330px;
+  }
+  .industry_detail_product_card_bottom {
+    width: 300px;
+  }
+}
+
+@media only screen and (max-width: 321px) {
+  .industry_detail_left {
+    width: 285px;
+  }
+  .industry_detail_right_img {
+    width: 285px;
+    height: 240px;
+  }
+  /* detail  */
+  .industry_detail_Card {
+    margin: 1rem 0rem;
+    width: 90px;
+    padding: 0.5rem 0;
+  }
+
+  .industry_detail_body {
+    width: 285px;
+  }
+  /* detail service  */
+  .industry_detail_service_card {
+    width: 285px;
+  }
+  .industry_detail_product_card_bottom {
+    width: 300px;
+  }
+  .industry_detail_product_card { 
+    width: 270px; 
+  }
+  .industry_detail_product_card_bottom { 
+    width: 270px; 
+  }
+}

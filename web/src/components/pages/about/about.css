@@ -1,0 +1,579 @@
+.about_page {
+  margin: 0rem 5rem;
+}
+.rotated-element {
+  width: 3rem;
+  height: 3rem;
+  margin-right: 2rem;
+}
+
+.who_we_are {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.first_heading {
+  margin: 60px 0 60px 0rem;
+}
+.center_heading {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 7rem;
+}
+.about_team_size {
+  font-size: 40px !important;
+}
+.first_title {
+  color: #137bf0;
+  font-family: Inter !important;
+  font-size: 58px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.underline-part {
+  border-bottom: 0.4rem solid #137bf0;
+  padding-bottom: 10px;
+}
+.team-image{
+  width: 100%;
+height: 384px;
+flex-shrink: 0;
+}
+.who_we_are_left {
+  margin: 8rem 0 0 1rem;
+  width: 520px;
+  color: #fff;
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 37px;
+  text-align: justify;
+}
+
+.who_we_are_right_img {
+  width: 600px;
+  height: 650px;
+}
+
+.mission {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.mission_btn {
+  /* width: 234px; */
+  /* height: 55px;  */
+  padding: 1rem 3rem;
+  font-size: 15px;
+  background: linear-gradient(
+    90deg,
+    rgba(19, 123, 240, 1) 0%,
+    rgba(0, 67, 114, 1) 100%
+  );
+  color: white;
+  border: 1px solid black;
+  /* border-radius: 5px; */
+  cursor: pointer;
+}
+.mission_btn:hover {
+  color: white !important;
+}
+.mission_btn_text {
+  margin: -0.5rem 0.5rem;
+}
+
+.mission_right_img {
+  margin: -3rem 0 0 0;
+  width: 350px;
+  height: 350px;
+}
+
+.vision {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.vision_right_img {
+  margin: 10rem 0 0 0;
+  width: 621px;
+  height: 373px;
+}
+
+/* team  */
+.about_team {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 0 1rem;
+}
+.team_box {
+  background: #00193c;
+  width: 350px;
+  height: 500px;
+  margin: 2rem 0;
+}
+.team_box_text {
+  margin: 2rem;
+}
+.team_box_heading {
+  color: #137bf0;
+  font-family: Inter;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px;
+}
+.team_box_designation {
+  color: #fff;
+  font-family: Inter;
+  font-size: 21.7px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 33px;
+}
+
+.about_business_cls {
+  width: 1280px;
+  height: 780px;
+  padding: 1rem 3rem;
+  background: #092948;
+  margin: 3rem auto;
+}
+.about_business {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.about_business_left {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 580px;
+  scrollbar-width: thin;
+  width: 35%;
+  /* margin-top: 100px; */
+}
+
+.about_business_left_box {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  gap: 20px;
+  margin-top: 20px;
+  margin-left: 20px;
+}
+.about_business_left_box_item {
+  cursor: pointer;
+  width: 378px;
+  display: flex;
+  padding: 2rem;
+  border-left: 1rem solid #137bf0;
+  /* background: #137bf0; */
+  background: #00193c;
+}
+.about_business_left_box_item_active {
+  background: #137bf0 !important;
+  border-left: 1rem solid white !important;
+}
+.box_heading_business_about {
+  color: #fff;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.about_business_right {
+  padding: 2rem;
+  background: #00193c;
+  width: 58%;
+  border-left: 1rem solid white;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 580px;
+  scrollbar-width: thin;
+}
+.about_business_right_heading {
+  color: #fff;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.about_business_right_paragraph {
+  color: #fff;
+  font-family: Inter;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 37px;
+  text-align: justify;
+}
+
+.past_and_presentCls {
+  margin: 0 2rem !important;
+}
+.past_and_present {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}  
+
+.past_and_presentCard_active {
+  background: #092948 !important;
+}
+.past_and_presentCard_text {
+  color: #137bf0;
+  font-family: Inter;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px; /* 114.286% */
+}
+.past_and_presentCard {
+  cursor: pointer;
+  position: relative;
+  width: 400px;
+  height: 156px;
+  background: #00193c;
+  ;
+  padding: 2rem;
+}
+
+.past_and_presentCard_img {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  height: auto;
+}
+
+.past_and_present_arrow {
+  width: 400px;
+  height: 156px;
+  position: relative;
+  right: 0;
+  bottom: 0;
+}
+.triangle_radius {
+  display: flex;
+  justify-content: center;
+}
+.about_heading {
+  margin-left: 6rem;
+}
+
+
+@media only screen and (max-width: 1441px) {
+  .about_heading {
+    margin-left: 1rem;
+  }
+  .about_team { 
+    margin: 0 0rem;
+  }
+  .past_and_presentCls {
+    margin: 0 1rem;
+  }
+  .who_we_are_right_img {
+    width: 55rem;
+    height: 65rem;
+  }
+}
+
+
+/* @media only screen and (max-width: 1201px) {
+  .about_business_cls {
+    width: 1100px;
+    padding: 1rem 2rem;
+  }
+  .past_and_presentCls {
+    margin: 0 0.8rem;
+  }
+  .past_and_presentCard {
+    width: 280px;
+  }
+  .team_box {
+    width: 280px;
+    height: 480px;
+  }
+  .vision {
+    justify-content: space-between;
+  }
+  .who_we_are_left {
+    width: 420px;
+  }
+  .vision_right_img {
+    width: 421px;
+    height: 323px;
+  }
+   
+  .who_we_are_right_img {
+    width: 50rem;
+    height: 60rem;
+    margin-bottom: 3rem;
+  }
+  .team-image{
+  height: 340px;
+  }
+} */
+@media only screen and (max-width: 1024px) {
+  .about_business_cls {
+    width: 900px;
+    padding: 1rem 2rem;
+  }
+  .past_and_presentCls {
+    margin: 0 0.8rem;
+  }
+  .past_and_presentCard {
+    width: 280px;
+  }
+  .team_box {
+    width: 280px;
+    height: 480px;
+  }
+  .vision {
+    justify-content: space-between;
+  }
+  .who_we_are_left {
+    width: 420px;
+  }
+  .vision_right_img {
+    width: 421px;
+    height: 323px;
+  }
+  .who_we_are_right_img {
+    width: 421px;
+    height: 550px;
+  }
+  .team-image{
+  height: 340px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .about_page {
+    margin: 0rem 1rem;
+  }
+  /* business */
+  .about_business_cls {
+    width: 730px;
+    height: 680px;
+    padding: 0.5rem 1rem;
+  }
+  .about_business_left {
+    height: 480px;
+    width: 35%;
+  }
+  .about_business_right {
+    padding: 1rem 1.5rem;
+    height: 480px;
+  }
+  .box_heading_business_about {
+    font-size: 20px;
+  }
+  .about_business_left_box_item {
+    padding: 1rem;
+  }
+  /* past and present */
+  .past_and_presentCls {
+    margin: 0 0.8rem;
+  }
+  .past_and_presentCard {
+    width: 200px;
+    height: 100px;
+  }
+  .past_and_presentCard_text {
+    font-size: 21px;
+  }
+  /* team */
+  .team_box {
+    width: 350px;
+    height: 500px;
+  }
+  /* vision */
+  .vision {
+    justify-content: center;
+  }
+  .who_we_are_left {
+    width: 720px;
+  }
+  .vision_right_img {
+    margin-top: 2rem !important;
+    width: 621px;
+    height: 373px;
+  }
+  .img_heightwidth{
+    width: 100%;
+    height: auto;
+  }
+  .who_we_are_right_img {
+    margin-bottom:0rem !important;
+
+    width: 580px;
+    height: 680px;
+  }
+  .team-image{
+    height: 340px;
+    }
+}
+@media only screen and (max-width: 426px) {
+  .past_and_present {
+    justify-content: center;
+  }
+  .about_heading {
+    margin-left: 0.5rem;
+  }
+  .first_heading {
+    margin: 60px 0 60px 0rem;
+  }
+
+  .first_title {
+    font-size: 50px;
+  }
+
+  .about_page {
+    margin: 0rem 1rem;
+  }
+  /* business */
+  .about_business_cls {
+    width: 370px;
+    padding: 0.5rem 0 0 0;
+  }
+  .about_business_left {
+    width: 100%;
+  }
+  .about_business_right {
+    padding: 1rem 1.5rem;
+    width: 100%;
+  }
+  .about_business_left_box {
+    margin-left: 0;
+  }
+  .box_heading_business_about {
+    font-size: 20px;
+  }
+  .about_business_left_box_item {
+    padding: 1rem;
+  }
+  /* past and present */
+  .past_and_presentCls {
+    margin: 0 0rem;
+  }
+  .past_and_presentCard {
+    margin: 1rem 0rem;
+    width: 370px;
+    height: 100px;
+  }
+  .past_and_presentCard_text {
+    font-size: 21px;
+  }
+  .about_team_size {
+    font-size: 60px !important;
+  }
+  /* team */
+  .team_box {
+    width: 370px;
+  }
+  /* vision */
+
+  .who_we_are_left {
+    margin: 3rem 0 0 0;
+    width: 370px;
+  }
+  .vision_right_img {
+    margin-top: 1rem !important;
+    width: 400px;
+    height: 373px;
+  }
+  .who_we_are_right{
+    margin-bottom:-6rem !important;     
+
+  }
+  .who_we_are_right-vission{
+    margin-bottom: 6rem !important;
+  }
+  .who_we_are_right_img {
+    width: 400px;
+    height: 550px;
+  }
+  .team-image{
+    height: 340px;
+    }
+}
+@media only screen and (max-width: 376px) {
+  .first_title {
+    font-size: 40px;
+  }
+
+  /* business */
+  .about_business_cls {
+    width: 330px;
+  }
+
+  /* past and present */
+
+  .past_and_presentCard {
+    width: 330px;
+  }
+  /* team */
+  .team_box {
+    width: 330px;
+  }
+  /* vision */
+
+  .who_we_are_left {
+    width: 330px;
+  }
+  .who_we_are_right{
+    margin-bottom: 2rem !important;
+
+  }
+  .vision_right_img {
+    margin-top: -2rem !important;
+    margin-bottom: -12rem !important;
+    width: 330px;
+    height: 373px;
+  }
+  .who_we_are_right_img {
+
+    width: 330px;
+    height: 400px;
+  }
+}
+@media only screen and (max-width: 321px) {
+  /* business */
+  .about_business_cls {
+    width: 285px;
+  }
+
+  /* past and present */
+ 
+
+  .past_and_presentCard {
+    width: 285px;
+  }
+  /* team */
+  .team_box {
+    width: 285px;
+  }
+  /* vision */
+
+  .who_we_are_left {
+    width: 285px;
+  }
+  .vision_right_img {
+    width: 285px;
+    height: 373px;
+  }
+  .who_we_are_right_img {
+    width: 285px;
+    height: 400px;
+  }
+}

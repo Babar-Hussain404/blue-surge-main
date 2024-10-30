@@ -1,0 +1,111 @@
+/* navbarCss.css */
+body.no-scroll {
+  overflow: hidden !important;
+}
+
+.BottomNavbar {
+  padding: 0rem 0 0 0;
+  height: 100vh;
+  background: #000028;
+  /* background: linear-gradient(90deg,
+      rgb(4, 48, 97) 0%,
+      rgb(2, 41, 69) 100%); */
+  z-index: 500000000000000000000000000;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  color: white;
+  right: 0;
+  opacity: 1 !important;
+}
+
+.bottom-navbar-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.bottom-navbar-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.bottom-navbar-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.bottom-navbar-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.navmaindiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0rem 0;
+  z-index: 78797895454;
+  gap: 5rem;
+}
+.image_text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.navscrollbar {
+  /* background: #000028; */
+  /* width: 25%; */
+  padding-right: 4rem;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 60vh;
+  scrollbar-width: thin;
+}
+.crossbtnnav {
+  position: absolute;
+  right: 2rem;
+  top: 2rem;
+  cursor: pointer;
+}
+.text_image {
+  margin-top: -3rem;
+}
+.navbottompara {
+  margin-bottom: 2rem;
+  margin-right: 4rem;
+
+  font-family: inter;
+  font-size: 16px;
+  cursor: pointer;
+  color: white;
+}
+.navbottompara:hover {
+  text-decoration: underline;
+}
+
+@media only screen and (max-width: 768px) {
+  .side__button {
+    margin: 3rem 0;
+  }
+  .navbottompara { 
+    margin-right: 2rem; 
+    font-size: 20px; 
+  }
+  .BottomNavbar {
+    top: 1;
+    height: 100vh;
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .navbottompara {
+    margin: 2rem;
+  }
+  .text_image {
+    margin-top: 0rem !important;
+  }
+}

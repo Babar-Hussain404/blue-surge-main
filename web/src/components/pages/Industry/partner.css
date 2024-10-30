@@ -1,0 +1,110 @@
+.business_container {
+  margin: 5rem 5rem 2rem 10.5rem;
+}
+.business_cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-left: -5rem;
+}
+
+.card_item {
+  padding: 4rem 0 0 2.5rem;
+}
+
+.card_arrow {
+  position: absolute;
+  bottom: 3rem;
+  right: 3rem;
+}
+
+.card_heading {
+  color: #137bf0;
+  font-family: Inter;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.business_card {
+  width: 412px;
+  position: relative;
+  height: 413px;
+  background: #00183c;
+  margin: 1rem 0;
+  overflow: hidden;
+  transition: background-color 0.5s;
+}
+.card_img {
+  width: 412px;
+  height: 241px !important;
+}
+.business_card:hover {
+  background: #092948; /* Change background color on hover */
+}
+
+.business_card:hover img {
+  transform: scale(1.1); /* Zoom in on image on hover */
+}
+
+.card_heading {
+  color: #137bf0; /* Default color */
+  transition: color 0.3s; /* Smooth transition for text color */
+}
+
+.business_card:hover .card_heading {
+  color: white; /* Change text color to white on hover */
+}
+
+@media only screen and (max-width: 1441px) {
+  .business_container {
+    margin: 5rem 5rem 2rem 5rem;
+  }
+  .business_cards {
+    margin-left: 0rem;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .business_container {
+    margin: 5rem 3rem 2rem 3rem;
+  }
+  .business_card {
+    width: 300px;
+    height: 350px;
+  }
+  .card_img {
+    width: 300px;
+    height: 180px !important;
+  }
+  .card_item {
+    padding: 2.5rem 0 0 1.8rem;
+  }
+  .card_arrow {
+    bottom: 2rem;
+    right: 2rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .business_card {
+    width: 340px;
+    height: 350px;
+  }
+  .card_img {
+    width: 340px;
+    height: 200px !important;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .business_container {
+    margin: 5rem 1rem 2rem 1rem;
+  }
+  .business_card {
+    width: 340px;
+    height: 350px;
+  }
+  .card_img {
+    width: 340px;
+    height: 200px !important;
+  }
+}

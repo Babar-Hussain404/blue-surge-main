@@ -1,0 +1,259 @@
+.service-top {
+  display: flex;
+}
+
+.sfi {
+  display: flex;
+  justify-content: space-between;
+}
+.search_btn {
+  /* background: #0071ef !important; */
+  font-size: 10px;
+  width: 80.41px;
+  padding: 1rem 1rem !important;
+  position: fixed;
+  margin: 2rem 0rem 4rem 5rem !important;
+  border-radius: 0 !important;
+  color: white !important;
+  font-weight: 600 !important;
+  background: rgb(2, 0, 36);
+  font-family: Inter;
+  line-height: 14.99px;
+  background: linear-gradient(
+    90deg,
+    rgba(19, 123, 240, 1) 0%,
+    rgba(0, 67, 114, 1) 100%
+  );
+}
+
+.service-text {
+  color: #000;
+
+  font-family: Inter;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 28px;
+  background-color: #fff !important;
+  padding: 6rem;
+  text-align: justify;
+}
+
+.heading-margin {
+  margin-left: 1.5rem !important;
+}
+
+.card_container {
+  width: 100%;
+  flex-shrink: 0;
+  background: #00183c;
+  margin: 0 !important;
+}
+
+.card_body {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  background: #092948;
+}
+
+.card_img {
+  height: 350px;
+  flex-shrink: 0;
+}
+
+.card_name {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  color: #fff;
+  font-family: Inter;
+  font-size: 36px !important;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 32px;
+  padding: 3rem 0 1rem 0 !important;
+  margin-left: 7rem;
+  /* 66.667% */
+}
+
+.image-size {
+  width: 50% !important;
+}
+
+.drop-down-button {
+  margin: 5rem 5rem !important;
+}
+
+.dropdown-position1 {
+  margin-top: -30px !important;
+  margin-bottom: -110px !important;
+  margin-left: 50px;
+}
+
+.dropdown-position2 {
+  margin-top: -30px !important;
+  margin-bottom: -110px !important;
+  margin-left: 210px;
+}
+
+.dropdown-position3 {
+  margin-top: -30px !important;
+  margin-bottom: -110px !important;
+  margin-left: 370px;
+}
+
+.drop-down-button {
+  margin-left: 8rem !important;
+}
+.btn1-fontfamily {
+  font-family: Inter !important;
+}
+.research_left_Img {
+  margin: 4rem 0rem 4rem 0rem;
+  width: 400px;
+  height: 600px;
+}
+@media only screen and (max-width: 1024px) {
+  .service-card-size {
+    width: 400px !important;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .drop-down-button {
+    margin: 5rem 0rem 4rem -1.5rem !important;
+  }
+  .service-top {
+    flex-wrap: wrap;
+  }
+
+  .image-size {
+    width: 100% !important;
+  }
+
+  .service-card-size {
+    width: 80% !important;
+  }
+}
+
+@media only screen and (max-width: 425px) {
+  .service-text {
+    font-family: Inter;
+    padding: 2rem !important;
+  }
+}
+
+@media only screen and (max-width: 426px) {
+  .card_name {
+    margin-left: 2.8rem !important;
+  }
+  .service-card-size {
+    width: 94% !important;
+  }
+  .text-margin {
+    margin: 1rem !important;
+  }
+
+  .service-text {
+    font-family: Inter;
+    padding: 2rem !important;
+    font-size: 18px !important;
+  }
+
+  .drop-down-button {
+    margin: 4rem 0rem 0rem -3rem !important;
+  }
+
+  .heading-margin {
+    margin-left: -2.8rem !important;
+  }
+
+  .dropdown-position1 {
+    margin-top: 30px !important;
+    margin-left: -20px;
+  }
+
+  .dropdown-position2 {
+    margin-top: 30px !important;
+    margin-left: 110px;
+  }
+
+  .dropdown-position3 {
+    margin: 30px 0 0 170px !important;
+    /* margin-left: 170px; */
+  }
+}
+
+@media only screen and (max-width: 376px) {
+  .card_name {
+    font-size: 35px;
+    margin-left: 0.8rem !important;
+    padding: 2rem 0 2rem !important;
+  }
+  .card-width {
+    width: 100% !important;
+  }
+  .card-padding {
+    padding: 0rem !important;
+  }
+  .service-card-size {
+    width: 94% !important;
+  }
+  .text-margin {
+    margin: 0rem !important;
+  }
+   
+
+  .dropdown-position3 {
+    margin: 30px 0 0 140px !important;
+  }
+  .service-text {
+    font-size: 14px !important;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .card_name {
+    font-size: 35px;
+  }
+  .card-width {
+    width: 100% !important;
+  }
+  .card-padding {
+    padding: 0rem !important;
+  }
+  .service-card-size {
+    width: 94% !important;
+  }
+  .text-margin {
+    margin: 0rem !important;
+  }
+  .service-text {
+    font-family: Inter;
+    padding: 1rem !important;
+  }
+
+   
+
+  .dropdown-position3 {
+    margin: 20px 0 0 100px !important;
+    /* margin-left: 170px; */
+  }
+
+  .dropdown-position2 {
+    margin-top: 20px !important;
+    margin-left: 60px;
+  }
+
+  .dropdown-position1 {
+    margin-top: 20px !important;
+    margin-left: -50px !important;
+  }
+  .research_left_Img {
+    margin: -5rem 0rem 2rem 0rem !important;
+    width: 400px;
+    height: 600px;
+  }
+}
