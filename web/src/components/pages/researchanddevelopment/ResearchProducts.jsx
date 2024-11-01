@@ -52,7 +52,7 @@ const ResearchProducts = () => {
     setProductLoading(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/product/random`
+        `https://web.bluesurge.com.pk/product/random`
       );
       setShuffleProducts(response.data.products);
       setProductLoading(false);
@@ -122,7 +122,7 @@ const ResearchProducts = () => {
                                     >
                                         <Card.Img
                                             className="card-img-no-border card-title"
-                                            src={`${process.env.REACT_APP_IMAGE_URL}/${product && product.thumbnailImage}`}
+                                            src={`https://admin.bluesurge.com.pk/uploads/${product && product.thumbnailImage}`}
                                             style={{ height: '400px', objectFit: 'cover', }}
                                         />
                                         <Card.Body style={{ display: "flex", flexDirection: "column" }}>
@@ -151,7 +151,7 @@ const ResearchProducts = () => {
                                     >
                                         <Card.Img
                                             className="card-img-no-border card-title"
-                                            src={`${process.env.REACT_APP_IMAGE_URL}/${product && product.thumbnailImage}`}
+                                            src={`https://admin.bluesurge.com.pk/uploads/${product && product.thumbnailImage}`}
                                             style={{ height: '200px' }}
                                         />
                                         <Card.Body style={{ display: "flex", flexDirection: "column" }}>

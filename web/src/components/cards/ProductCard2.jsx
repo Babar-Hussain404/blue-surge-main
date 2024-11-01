@@ -83,7 +83,7 @@ const ProductCard2 = ({ service, totalPages, serviceLoading }) => {
                           >
                             <Card.Img
                               variant="top"
-                              src={`${process.env.REACT_APP_IMAGE_URL}/${
+                              src={`https://admin.bluesurge.com.pk/uploads/${
                                 card && card.thumbnailImage
                               }`}
                               className="img_heightwidth"

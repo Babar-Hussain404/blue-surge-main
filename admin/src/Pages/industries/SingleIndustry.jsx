@@ -119,7 +119,7 @@ const SingleIndustry = ({ singleContactLoading, setSingleContactLoading }) => {
                 <br />
                 <img
                   style={{ width: "200px" }}
-                  src={`${process.env.REACT_APP_IMAGE_URL}/${
+                  src={`https://admin.bluesurge.com.pk/uploads/${
                     contactData && contactData.logo
                   }`}
                 />
@@ -132,7 +132,7 @@ const SingleIndustry = ({ singleContactLoading, setSingleContactLoading }) => {
                 <br />
                 <img
                   style={{ width: "400px" }}
-                  src={`${process.env.REACT_APP_IMAGE_URL}/${
+                  src={`https://admin.bluesurge.com.pk/uploads/${
                     contactData && contactData.image
                   }`}
                 />
@@ -145,7 +145,7 @@ const SingleIndustry = ({ singleContactLoading, setSingleContactLoading }) => {
                 <br />
                 <img
                   style={{ width: "400px" }}
-                  src={`${process.env.REACT_APP_IMAGE_URL}/${
+                  src={`https://admin.bluesurge.com.pk/uploads/${
                     contactData && contactData.detailImage
                   }`}
                 />

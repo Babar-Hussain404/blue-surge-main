@@ -43,7 +43,7 @@ const PostImageModal = () => {
                                 key={index}
                               >
                                 <img
-                                  src={`${process.env.REACT_APP_IMAGE_URL}/${post.url}`}
+                                  src={`https://admin.bluesurge.com.pk/uploads/${post.url}`}
                                   alt="image"
                                 />
                               </div>

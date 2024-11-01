@@ -149,7 +149,7 @@ const PartnerList = () => {
                                           <img
                                             style={{ width: "5rem" }}
                                             className="widget-image img-circle  img_circle_border"
-                                            src={`${process.env.REACT_APP_IMAGE_URL}/${contact.image}`}
+                                            src={`https://admin.bluesurge.com.pk/uploads/${contact.image}`}
                                           />
                                         </td>
                                         <td className="visible-lg text-center">

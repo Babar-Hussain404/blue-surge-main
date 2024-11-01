@@ -9,7 +9,7 @@ const IndustryServiceItem = ({ id }) => {
   const getAboutTeamData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/service/industry/${id}`
+        `https://web.bluesurge.com.pk/service/industry/${id}`
       );
       setPartnerData(response.data.services);
       setPartnerLoading(false);

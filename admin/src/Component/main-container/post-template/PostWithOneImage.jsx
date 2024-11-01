@@ -16,7 +16,7 @@ const PostWithOneImage = ({ post }) => {
           onClick={() => singlePostDispath(post.photos[0].url)}
         >
           <img
-            src={`${process.env.REACT_APP_IMAGE_URL}/${post.photos[0].url}`}
+            src={`https://admin.bluesurge.com.pk/uploads/${post.photos[0].url}`}
             className="one_img_post post_img_radius"
           />
         </a>

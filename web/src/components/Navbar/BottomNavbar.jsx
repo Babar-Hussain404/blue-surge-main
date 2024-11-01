@@ -15,7 +15,7 @@ const BottomNavbar = ({ viewState, setViewState, onClose, setNavbarClose }) => {
     setPartnerLoading(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/industry/list`
+        `https://web.bluesurge.com.pk/industry/list`
       );
       setPartnerData(response.data.industries);
       setPartnerLoading(false);
@@ -47,7 +47,7 @@ const BottomNavbar = ({ viewState, setViewState, onClose, setNavbarClose }) => {
     setPartnerLoading(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/service/list`
+        `https://web.bluesurge.com.pk/service/list`
       );
       setPartnerData(response.data.service);
       setPartnerLoading(false);
@@ -61,7 +61,7 @@ const BottomNavbar = ({ viewState, setViewState, onClose, setNavbarClose }) => {
     setPartnerLoading(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/service/industry/${industryIdData}`
+        `https://web.bluesurge.com.pk/service/industry/${industryIdData}`
       );
       setPartnerData(response.data.services);
       setPartnerLoading(false);
@@ -76,7 +76,7 @@ const BottomNavbar = ({ viewState, setViewState, onClose, setNavbarClose }) => {
     setPartnerLoading(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/product/detail/${industryIdData}`
+        `https://web.bluesurge.com.pk/product/detail/${industryIdData}`
       );
       setPartnerData(response.data.products);
       setPartnerLoading(false);

@@ -43,7 +43,7 @@ const ServiceDetail = () => {
     setServiceLoading(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/service/${id}`
+        `https://web.bluesurge.com.pk/service/${id}`
       );
       const formData = response.data.service;
       const advantagesArray = formData.advantages.map((item) =>
@@ -131,7 +131,7 @@ const ServiceDetail = () => {
         <div className="">
           <img
             className="service-detail-img1"
-            src={`${process.env.REACT_APP_IMAGE_URL}/${
+            src={`https://admin.bluesurge.com.pk/uploads/${
               serviceData && serviceData.detailImage
             }`}
           />

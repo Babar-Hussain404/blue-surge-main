@@ -57,7 +57,7 @@ const IndustryDetail = () => {
   const getAboutTeamData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/industry/${id}`
+        `https://web.bluesurge.com.pk/industry/${id}`
       );
       setPartnerData(response.data.industry);
       setPartnerLoading(false);
@@ -133,7 +133,7 @@ const IndustryDetail = () => {
             className="industry_detail_right_img"
             src={
               partnerData &&
-              `${process.env.REACT_APP_IMAGE_URL}/${partnerData.detailImage}`
+              `https://admin.bluesurge.com.pk/uploads/${partnerData.detailImage}`
             }
           />
         </div>

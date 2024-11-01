@@ -63,7 +63,7 @@ const CommentList = () => {
               <img
                 src={
                   comment.profilePicture
-                    ? `${process.env.REACT_APP_IMAGE_URL}/${comment.profilePicture}`
+                    ? `https://admin.bluesurge.com.pk/uploads/${comment.profilePicture}`
                     : `img/placeholders/avatars/avatar2.jpg`
                 }
                 alt="Avatar"

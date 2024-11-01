@@ -26,7 +26,7 @@ const ForgetPassword = ({ formType, toggleForm }) => {
     }
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/fruit/user/forget-password`,
+        `https://web.bluesurge.com.pk/fruit/user/forget-password`,
         emailResend
       );
       toggleForm("Login");

@@ -10,7 +10,7 @@ const Business = () => {
     try {
       setRDLoading(true);
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/aboutus`
+        `https://web.bluesurge.com.pk/aboutus`
       );
       setRDData(response.data.about);
       setRDLoading(false);

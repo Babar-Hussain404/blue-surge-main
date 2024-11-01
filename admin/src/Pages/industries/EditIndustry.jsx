@@ -39,15 +39,15 @@ const EditIndustry = () => {
       const response = await getSingleIndustryReq(industryid);
       setSignUpData(response.data.industry);
       if (response.data.industry.image) {
-        const image = `${process.env.REACT_APP_IMAGE_URL}/${response.data.industry.image}`;
+        const image = `https://admin.bluesurge.com.pk/uploads/${response.data.industry.image}`;
         setImagePreview(image);
       }
       if (response.data.industry.detailImage) {
-        const detailImage = `${process.env.REACT_APP_IMAGE_URL}/${response.data.industry.detailImage}`;
+        const detailImage = `https://admin.bluesurge.com.pk/uploads/${response.data.industry.detailImage}`;
         setImagePreview1(detailImage);
       }
       if (response.data.industry.logo) {
-        const logo = `${process.env.REACT_APP_IMAGE_URL}/${response.data.industry.logo}`;
+        const logo = `https://admin.bluesurge.com.pk/uploads/${response.data.industry.logo}`;
         setImagePreview2(logo);
       }
     } catch (error) {

@@ -169,7 +169,7 @@ const PostModal = () => {
                   <a href="/">
                     <img
                       src={`${
-                        loginUser.profilePicture ? `${process.env.REACT_APP_IMAGE_URL}/${loginUser.profilePicture}`
+                        loginUser.profilePicture ? `https://admin.bluesurge.com.pk/uploads/${loginUser.profilePicture}`
                           : 'img/placeholders/avatars/avatar2.jpg'
                       }`}
                       alt="avatar"

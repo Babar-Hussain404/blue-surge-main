@@ -88,7 +88,7 @@ const HomePartner = () => {
     setPartnerLoading(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/partners`
+        `https://web.bluesurge.com.pk/partners`
       );
       setPartnerData(response.data.partner);
       setPartnerLoading(false);
@@ -126,7 +126,7 @@ const HomePartner = () => {
                       <img
                         className="img-margin"
                         style={{ marginLeft: "6rem" }}
-                        src={`${process.env.REACT_APP_IMAGE_URL}/${product?.image}`}
+                        src={`https://admin.bluesurge.com.pk/uploads/${product?.image}`}
                       />
                     </a>
                   </div>
@@ -144,7 +144,7 @@ const HomePartner = () => {
                   <img
                     className="img-hover img-margin"
                     style={{ marginLeft: "6rem", width: "150px" }}
-                    src={`${process.env.REACT_APP_IMAGE_URL}/${product?.image}`}
+                    src={`https://admin.bluesurge.com.pk/uploads/${product?.image}`}
                   />
                 </a>
               </div>

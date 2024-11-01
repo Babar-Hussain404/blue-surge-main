@@ -47,11 +47,11 @@ const HomeServicesCards = () => {
     try {
       let response = [];
       response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/service/home/industry?industryId=${industryid}`
+        `https://web.bluesurge.com.pk/service/home/industry?industryId=${industryid}`
       );
       if (response.data?.services?.length === 0) {
         response = await axios.get(
-          `${process.env.REACT_APP_BASE_URL}/service/home/industry`
+          `https://web.bluesurge.com.pk/service/home/industry`
         );
       }
       setIndustryProducts(response.data?.services);
@@ -133,7 +133,7 @@ const HomeServicesCards = () => {
                       >
                         <Card.Img
                           className="card-img-no-border card-title"
-                          src={`${process.env.REACT_APP_IMAGE_URL}/${
+                          src={`https://admin.bluesurge.com.pk/uploads/${
                             product && product.thumbnailImage
                           }`}
                           style={{ height: "200px" }}
@@ -190,7 +190,7 @@ const HomeServicesCards = () => {
                     >
                       <Card.Img
                         className="card-img-no-border card-title"
-                        src={`${process.env.REACT_APP_IMAGE_URL}/${
+                        src={`https://admin.bluesurge.com.pk/uploads/${
                           product && product.thumbnailImage
                         }`}
                         style={{ height: "200px" }}
@@ -242,7 +242,7 @@ const HomeServicesCards = () => {
                   //     >
                   //       <Card.Img
                   //         className="card-img-no-border card-title"
-                  //         src={`${process.env.REACT_APP_IMAGE_URL}/${
+                  //         src={`https://admin.bluesurge.com.pk/uploads/${
                   //           product && product?.thumbnailImage
                   //         }`}
                   //         style={{ height: "200px" }}

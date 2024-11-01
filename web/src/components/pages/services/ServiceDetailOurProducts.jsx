@@ -10,7 +10,7 @@ const ServiceDetailOurProducts = () => {
   const getProductsData = async (page) => {
     setProductLoading(true)
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/product/detail/${id}`);
+      const response = await axios.get(`https://web.bluesurge.com.pk/product/detail/${id}`);
       setShuffleProducts(response.data.products);
       setProductLoading(false)
     } catch (error) {
@@ -42,7 +42,7 @@ const ServiceDetailOurProducts = () => {
             <>
               <div className="business_card">
                 <img className="card_img"
-                  src={`${process.env.REACT_APP_IMAGE_URL}/${item && item.detailImage
+                  src={`https://admin.bluesurge.com.pk/uploads/${item && item.detailImage
                     }`}
 
                 />

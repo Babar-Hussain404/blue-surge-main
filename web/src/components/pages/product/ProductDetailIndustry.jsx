@@ -8,7 +8,7 @@ const ProductDetailIndustry = ({ productData }) => {
     setProductLoading(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/service/${productData}`
+        `https://web.bluesurge.com.pk/service/${productData}`
       );
       setShuffleProducts(response.data.service);
       setProductLoading(false);
@@ -57,7 +57,7 @@ const ProductDetailIndustry = ({ productData }) => {
           <div>
             <img
               className="communcation-img2"
-              src={`${process.env.REACT_APP_IMAGE_URL}/${
+              src={`https://admin.bluesurge.com.pk/uploads/${
                 shuffleProducts && shuffleProducts.detailImage
               }`}
               alt="No Image Found"

@@ -17,6 +17,7 @@ const AdminResearchAndDevelopment = () => {
     ourTeamImage: null,
     research: "",
     researchImage: null,
+    test:"",
     technology: "",
     technologyImage: "",
     products: [],
@@ -35,15 +36,15 @@ const AdminResearchAndDevelopment = () => {
         setRdData(response.data.rd);
 
         if (response.data.rd.ourTeamImage) {
-          const ourTeamImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.rd.ourTeamImage}`;
+          const ourTeamImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.rd.ourTeamImage}`;
           setOurTeamImagePreview(ourTeamImageUrl);
         }
         if (response.data.rd.researchImage) {
-          const researchImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.rd.researchImage}`;
+          const researchImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.rd.researchImage}`;
           setResearchImagePreview(researchImageUrl);
         }
         if (response.data.rd.technologyImage) {
-          const technologyImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.rd.technologyImage}`;
+          const technologyImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.rd.technologyImage}`;
           setTechnologyImagePreview(technologyImageUrl);
         }
       } catch (error) {
@@ -95,6 +96,7 @@ const AdminResearchAndDevelopment = () => {
     formData.append("research", rdData.research);
     formData.append("researchImage", rdData.researchImage);
     formData.append("technology", rdData.technology);
+    formData.append("test", rdData.test);
     formData.append("technologyImage", rdData.technologyImage);
     formData.append("products", rdData.products);
 
@@ -137,12 +139,25 @@ const AdminResearchAndDevelopment = () => {
                 /> */}
                 <CKEditor
                   editor={ClassicEditor}
-                  data={rdData.heading}
+                  data={rdData.heading || ""}
                   onChange={(event, editor) => {
                     const data = editor.getData();
                     setRdData({
                       ...rdData,
                       heading: data,
+                    });
+                  }}
+                />
+
+                <label className="form-label">ParentCat1 ourTeamDetail </label>
+                <CKEditor
+                  editor={ClassicEditor}
+                  data={rdData.test || ""}
+                  onChange={(event, editor) => {
+                    const data = editor.getData();
+                    setRdData({
+                      ...rdData,
+                      test: data,
                     });
                   }}
                 />
@@ -161,7 +176,7 @@ const AdminResearchAndDevelopment = () => {
                 /> */}
                 <CKEditor
                   editor={ClassicEditor}
-                  data={rdData.technology}
+                  data={rdData.technology || ""}
                   onChange={(event, editor) => {
                     const data = editor.getData();
                     setRdData({

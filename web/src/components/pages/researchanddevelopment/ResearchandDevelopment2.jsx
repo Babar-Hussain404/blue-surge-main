@@ -24,13 +24,14 @@ const ResearchandDevelopment2 = ({ headertData, metaTagsData }) => {
 
   const [RDData, setRDData] = useState({
     heading: "",
+    test: "",
     technology: "",
   });
   const dispatch = useDispatch();
   const [RDLoading, setRDLoading] = useState(true);
   const getRDData = async () => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/rd`);
+      const response = await axios.get(`https://web.bluesurge.com.pk/rd`);//todo
       setRDData(response.data.rd || {}); // Set an empty object if data is undefined
       dispatch(technologyData(response.data.rd || {})); // Dispatch an action with empty object if data is undefined
       setRDLoading(false);
@@ -92,7 +93,7 @@ const ResearchandDevelopment2 = ({ headertData, metaTagsData }) => {
         }
         backgroundImage={
           headertData && headertData.researchImage === "undefined"
-            ? `${process.env.REACT_APP_IMAGE_URL}/${headertData.researchImage}`
+            ? `https://admin.bluesurge.com.pk/uploads/${headertData.researchImage}`//todo
             : headerImg
         }
         showButton={false}
@@ -124,20 +125,27 @@ const ResearchandDevelopment2 = ({ headertData, metaTagsData }) => {
                   <h2 className="first_title">
                     {RDData.heading && (
                       <>
-                        <span className="underline-part">
+                        <span>
                           {/* {RDData.heading.slice(0, 5)} */}
                           <div
-                            className="underline-part text-light custom-text-style"
-                            style={{ color: "white" }}
+                            className="custom-text-style"
+                            style={{ color: "#137bf0", padding:"20px 0px" }}
                             dangerouslySetInnerHTML={renderHTML(RDData.heading)}
                           />
+                          <div className="underline-part" style={{ width: "20%"}}></div>
                         </span>
                         {/* {RDData.heading.slice(5)} */}
                       </>
                     )}
                   </h2>
                 </div>
-
+                
+                <p className="research-development-section additional-width-class">
+                  <div
+                    dangerouslySetInnerHTML={renderHTML(RDData.ourTeamDetail)}
+                  />
+                  {/* {RDData && formatText(RDData.technology)} */}
+                </p>
                 <p className="research-development-section additional-width-class">
                   <div
                     dangerouslySetInnerHTML={renderHTML(RDData.technology)}

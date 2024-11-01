@@ -29,7 +29,7 @@ const AboutWhoWeAre = ({aboutData}) => {
             className="img_heightwidth"
             src={
               aboutData &&
-              `${process.env.REACT_APP_IMAGE_URL}/${aboutData.whoWeAreImage}`
+              `https://admin.bluesurge.com.pk/uploads/${aboutData.whoWeAreImage}`
               }
               />
               </div>

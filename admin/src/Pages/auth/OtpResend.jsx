@@ -26,7 +26,7 @@ const OtpResend = ({ formType, toggleForm }) => {
     }
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/fruit/user/otp-resend`,
+        `https://web.bluesurge.com.pk/fruit/user/otp-resend`,
         emailResend
       );
       toggleForm("Email Verification");

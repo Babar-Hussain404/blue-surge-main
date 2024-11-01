@@ -1,13 +1,13 @@
 import { ApiFetchReq } from "../../../api/ApiRequest";
 
 export const getMetaTagsReq = async () => {
-  return await ApiFetchReq("GET", `${process.env.REACT_APP_BASE_URL}/metatags`);
+  return await ApiFetchReq("GET", `https://web.bluesurge.com.pk/metatags`);
 };
  
 export const postMetaTagsReq = async (data) => {
   return await ApiFetchReq(
     "POST",
-    `${process.env.REACT_APP_BASE_URL}/metatags`,
+    `https://web.bluesurge.com.pk/metatags`,
     data
   );
 };

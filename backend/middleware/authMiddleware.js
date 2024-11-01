@@ -10,7 +10,7 @@ const authenticateToken = (req, res, next) => {
       .json({ error: "Not Authorized: No token in header" });
   }
 
-  jwt.verify(token, process.env.SECRET_KEY, (err, user) => {
+  jwt.verify(token, 12345, (err, user) => {
     if (err) {
       return res.status(403).json({ error: "Not Authorized" });
     }

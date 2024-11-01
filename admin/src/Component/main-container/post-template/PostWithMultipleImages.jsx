@@ -28,7 +28,7 @@ const PostWithMultipleImages = ({ post }) => {
         >
           <img
             className="three_img_post_imgone post_img_radius"
-            src={`${process.env.REACT_APP_IMAGE_URL}/${post.photos[0].url}`}
+            src={`https://admin.bluesurge.com.pk/uploads/${post.photos[0].url}`}
           />
         </a>
       </div>
@@ -41,7 +41,7 @@ const PostWithMultipleImages = ({ post }) => {
         >
           <img
             className="three_img_post_imgtwo post_img_radius"
-            src={`${process.env.REACT_APP_IMAGE_URL}/${post.photos[1].url}`}
+            src={`https://admin.bluesurge.com.pk/uploads/${post.photos[1].url}`}
           />
         </a>
         <a
@@ -52,7 +52,7 @@ const PostWithMultipleImages = ({ post }) => {
         >
           <img
             className="three_img_post_imgthree post_img_radius"
-            src={`${process.env.REACT_APP_IMAGE_URL}/${post.photos[2].url}`}
+            src={`https://admin.bluesurge.com.pk/uploads/${post.photos[2].url}`}
             style={thirdImageBlurStyle}
           />
         </a>

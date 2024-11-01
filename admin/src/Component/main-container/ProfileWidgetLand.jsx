@@ -8,7 +8,7 @@ const ProfileWidgetLand = () => {
               <a href="/">
                 <img
                   // src="img/placeholders/avatars/avatar2.jpg"
-                  src={`${loginUser.profilePicture? `${process.env.REACT_APP_IMAGE_URL}/${loginUser.profilePicture}`: `img/placeholders/avatars/avatar2.jpg`}`}
+                  src={`${loginUser.profilePicture? `https://admin.bluesurge.com.pk/uploads/${loginUser.profilePicture}`: `img/placeholders/avatars/avatar2.jpg`}`}
       
                   alt="avatar"
                   className="widget-image img-circle pull-left img_circle_border"

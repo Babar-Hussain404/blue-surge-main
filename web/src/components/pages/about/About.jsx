@@ -35,7 +35,7 @@ const About = ({ headertData, metaTagsData }) => {
   const getAboutData = async (page) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/aboutus`
+        `https://web.bluesurge.com.pk/aboutus`
       );
       setAboutData(response.data.about);
       dispatch(aboutDataDispatcher(response.data.about));
@@ -102,7 +102,7 @@ const About = ({ headertData, metaTagsData }) => {
         }
         backgroundImage={
           headertData && headertData.aboutImage === "undefined"
-            ? `${process.env.REACT_APP_IMAGE_URL}/${headertData.aboutImage}`
+            ? `https://admin.bluesurge.com.pk/uploads/${headertData.aboutImage}`
             : img1
         }
         showButton={false}

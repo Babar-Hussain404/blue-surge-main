@@ -39,15 +39,15 @@ const About = () => {
         setAboutUsData(response.data.about);
         setAboutLoading(false);
         if (response.data.about.whoWeAreImage) {
-          const whoWeAreImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.about.whoWeAreImage}`;
+          const whoWeAreImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.about.whoWeAreImage}`;
           setOldWhoImagePreview(whoWeAreImageUrl);
         }
         if (response.data.about.missionImage) {
-          const missionImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.about.missionImage}`;
+          const missionImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.about.missionImage}`;
           setOldMissionImagePreview(missionImageUrl);
         }
         if (response.data.about.visionImage) {
-          const visionImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.about.visionImage}`;
+          const visionImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.about.visionImage}`;
           setOldVisionImagePreview(visionImageUrl);
         }
       } catch (error) {

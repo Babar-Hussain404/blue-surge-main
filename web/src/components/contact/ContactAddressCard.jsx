@@ -11,7 +11,7 @@ const ContactAddressCard = () => {
     try {
       setDataLoading(true);
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/contact/address`
+        `https://web.bluesurge.com.pk/contact/address`
       );
       setContactData(response.data.address);
       setDataLoading(false);

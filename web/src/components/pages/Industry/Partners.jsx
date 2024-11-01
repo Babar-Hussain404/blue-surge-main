@@ -30,7 +30,7 @@ const Partners = ({ headertData, metaTagsData }) => {
   const getAboutTeamData = async () => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/industry/list`
+        `https://web.bluesurge.com.pk/industry/list`
       );
       setPartnerData(response.data.industries);
       setPartnerLoading(false);
@@ -94,7 +94,7 @@ const Partners = ({ headertData, metaTagsData }) => {
         }
         backgroundImage={
           headertData && headertData.businessImage
-            ? `${process.env.REACT_APP_IMAGE_URL}/${headertData.businessImage}`
+            ? `https://admin.bluesurge.com.pk/uploads/${headertData.businessImage}`
             : banner
         }
         showButton={false}
@@ -136,7 +136,7 @@ const Partners = ({ headertData, metaTagsData }) => {
                       <div key={index} className="business_card">
                         <img
                           className="card_img"
-                          src={`${process.env.REACT_APP_IMAGE_URL}/${industry.image}`}
+                          src={`https://admin.bluesurge.com.pk/uploads/${industry.image}`}
                         />
                         <div className="card_item">
                           <p className="card_heading">{industry.name}</p>

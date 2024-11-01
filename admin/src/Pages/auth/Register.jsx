@@ -40,7 +40,7 @@ const Register = ({ formType, toggleForm }) => {
     }
     try {
       const response = await axios.post(
-        `${process.env.REACT_APP_BASE_URL}/fruit/user/`,
+        `https://web.bluesurge.com.pk/fruit/user/`,
         signUpData
       );
       toggleForm("Email Verification");

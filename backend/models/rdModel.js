@@ -30,8 +30,7 @@ const rdSchema = new mongoose.Schema(
       type: String,
       default: "",
     },
-
-    technology: {
+    test: {
       type: String,
       default: "",
     },

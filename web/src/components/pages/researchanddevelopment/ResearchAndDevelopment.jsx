@@ -45,7 +45,7 @@ const ResearchAndDevelopment = ({ headertData, metaTagsData }) => {
   const [RDLoading, setRDLoading] = useState(true);
   const getRDData = async (page) => {
     try {
-      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/rd`);
+      const response = await axios.get(`https://web.bluesurge.com.pk/rd`);
       setRDData(response.data.rd || {}); // Set an empty object if data is undefined
       dispatch(technologyData(response.data.rd || {})); // Dispatch an action with empty object if data is undefined
       setRDLoading(false);
@@ -105,7 +105,7 @@ const ResearchAndDevelopment = ({ headertData, metaTagsData }) => {
         description={(headertData && headertData.researchDescription !== 'undefined') ? (headertData.researchDescription) : (`Blue Surge group comprises of various other companies and setups giving it a shape of a dynamic and versatile group having expertise in various fields.`)}
         backgroundImage={
           headertData && headertData.researchImage === 'undefined'
-            ? `${process.env.REACT_APP_IMAGE_URL}/${headertData.researchImage}`
+            ? `https://admin.bluesurge.com.pk/uploads/${headertData.researchImage}`
             : headerImg
         }
         showButton={true}
@@ -151,7 +151,7 @@ const ResearchAndDevelopment = ({ headertData, metaTagsData }) => {
               className="research_left_img"
               src={
                 RDData &&
-                `${process.env.REACT_APP_IMAGE_URL}/${RDData.ourTeamImage}`
+                `https://admin.bluesurge.com.pk/uploads/${RDData.ourTeamImage}`
               }
             />
           </div>
@@ -197,7 +197,7 @@ const ResearchAndDevelopment = ({ headertData, metaTagsData }) => {
                 className="research_left_img"
                 src={
                   RDData &&
-                  `${process.env.REACT_APP_IMAGE_URL}/${RDData.researchImage}`
+                  `https://admin.bluesurge.com.pk/uploads/${RDData.researchImage}`
                 }
               />
             </div>
@@ -254,7 +254,7 @@ const ResearchAndDevelopment = ({ headertData, metaTagsData }) => {
                 className="research_left_Img-bulb"
                 src={
                   RDData &&
-                  `${process.env.REACT_APP_IMAGE_URL}/${RDData.technologyImage}`
+                  `https://admin.bluesurge.com.pk/uploads/${RDData.technologyImage}`
                 }
               />
             </div>

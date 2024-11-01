@@ -50,7 +50,7 @@ const ProductDetailcard = () => {
     const getProductsData = async (page) => {
         setProductLoading(true)
         try {
-            const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/product/random`);
+            const response = await axios.get(`https://web.bluesurge.com.pk/product/random`);
             setShuffleProducts(response.data.products);
             setProductLoading(false)
         } catch (error) {
@@ -122,7 +122,7 @@ const ProductDetailcard = () => {
                                     >
                                         <Card.Img
                                             className="card-img-no-border card-title"
-                                            src={`${process.env.REACT_APP_IMAGE_URL}/${product && product.detailImage}`}
+                                            src={`https://admin.bluesurge.com.pk/uploads/${product && product.detailImage}`}
                                             style={{ height: '200px' }}
 
                                         />

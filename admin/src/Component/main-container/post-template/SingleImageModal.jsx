@@ -36,7 +36,7 @@ const SingleImageModal = () => {
                       <div className="carousel-inner">
                         <div className={"active item"}>
                           <img
-                            src={`${process.env.REACT_APP_IMAGE_URL}/${postImages}`}
+                            src={`https://admin.bluesurge.com.pk/uploads/${postImages}`}
                             alt="image"
                           />
                         </div>

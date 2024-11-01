@@ -48,7 +48,7 @@ const Header = () => {
                 className="nav_avatar"
                 src={`${
                   loginUser.profilePicture
-                    ? `${process.env.REACT_APP_IMAGE_URL}/${loginUser.profilePicture}`
+                    ? `https://admin.bluesurge.com.pk/uploads/${loginUser.profilePicture}`
                     : `img/placeholders/avatars/avatar.jpg`
                 }`}
                 alt="avatar"

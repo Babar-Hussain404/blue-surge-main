@@ -34,7 +34,7 @@ const AboutMission = ({aboutData}) => {
               className="img_heightwidth"
               src={
                 aboutData &&
-                `${process.env.REACT_APP_IMAGE_URL}/${aboutData.missionImage}`
+                `https://admin.bluesurge.com.pk/uploads/${aboutData.missionImage}`
                 }
                 />
                 </div>

@@ -33,10 +33,10 @@ const Home = ({ headertData }) => {
     setIndustryLoading(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/industry/home`
+        `https://web.bluesurge.com.pk/industry/home`
       );
       // const response = await axios.get(
-      //   `${process.env.REACT_APP_BASE_URL}/industry?page=${page}`
+      //   `https://web.bluesurge.com.pk/industry?page=${page}`
       // );
       setIndustryProducts(response.data.industrys);
       setIndustryLoading(false);
@@ -75,7 +75,7 @@ const Home = ({ headertData }) => {
         }
         backgroundImage={
           headertData && headertData.homeImage
-            ? `${process.env.REACT_APP_IMAGE_URL}/${headertData.homeImage}`
+            ? `https://admin.bluesurge.com.pk/uploads/${headertData.homeImage}`
             : headerImg2
         }
         showButton={true}

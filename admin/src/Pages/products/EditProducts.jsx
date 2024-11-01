@@ -223,15 +223,15 @@ const EditProducts = () => {
         detailImage: formData.detailImage,
       });
       if (formData.thumbnailImage) {
-        const thumbnailImage = `${process.env.REACT_APP_IMAGE_URL}/${formData.thumbnailImage}`;
+        const thumbnailImage = `https://admin.bluesurge.com.pk/uploads/${formData.thumbnailImage}`;
         setImagePreview(thumbnailImage); // Set preview for the old image
       }
       if (formData.video) {
-        const video = `${process.env.REACT_APP_IMAGE_URL}/${formData.video}`;
+        const video = `https://admin.bluesurge.com.pk/uploads/${formData.video}`;
         setImagePreview1(video); // Set preview for the old logo
       }
       if (formData.detailImage) {
-        const detailImage = `${process.env.REACT_APP_IMAGE_URL}/${formData.detailImage}`;
+        const detailImage = `https://admin.bluesurge.com.pk/uploads/${formData.detailImage}`;
         setImagePreview2(detailImage); // Set preview for the old logo
       }
     } catch (error) {

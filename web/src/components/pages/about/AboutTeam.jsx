@@ -8,7 +8,7 @@ const AboutTeam = () => {
   const getAboutTeamData = async (page) => {
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/about/team`
+        `https://web.bluesurge.com.pk/about/team`
       );
       setAboutTeamData(response.data.team);
       setAboutTeamLoading(false);
@@ -44,7 +44,7 @@ const AboutTeam = () => {
                   <img
                   className='team-image'
                     src={
-                      team && `${process.env.REACT_APP_IMAGE_URL}/${team.image}`
+                      team && `https://admin.bluesurge.com.pk/uploads/${team.image}`
                       
                     }
                     // style={{width:'100%',height:'200px'}}

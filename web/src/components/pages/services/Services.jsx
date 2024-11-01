@@ -42,10 +42,10 @@ const Services = ({ headertData, metaTagsData }) => {
       const response =
         selectedIds?.length > 0
           ? await axios.get(
-              `${process.env.REACT_APP_BASE_URL}/service/filter/${selectedIds}`
+              `https://web.bluesurge.com.pk/service/filter/${selectedIds}`
             )
           : await axios.get(
-              `${process.env.REACT_APP_BASE_URL}/service?page=${page}`
+              `https://web.bluesurge.com.pk/service?page=${page}`
             );
       setService(response.data.services);
       setTotalPages(response.data.meta.totalPages);
@@ -68,7 +68,7 @@ const Services = ({ headertData, metaTagsData }) => {
     setIndustryLoading(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_BASE_URL}/industry`
+        `https://web.bluesurge.com.pk/industry`
       );
       setIndustryProducts(response.data.industrys);
       setIndustryLoading(false);
@@ -169,7 +169,7 @@ const Services = ({ headertData, metaTagsData }) => {
         }
         backgroundImage={
           headertData && headertData.serviceDetailImage
-            ? `${process.env.REACT_APP_IMAGE_URL}/${headertData.serviceDetailImage}`
+            ? `https://admin.bluesurge.com.pk/uploads/${headertData.serviceDetailImage}`
             : headerImg
         }
         showButton={false}
