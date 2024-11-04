@@ -17,17 +17,25 @@ const AdminResearchAndDevelopment = () => {
     ourTeamImage: null,
     research: "",
     researchImage: null,
-    test:"",
+    test: "",
     technology: "",
     technologyImage: "",
     products: [],
+    categories: [], // Categories state to manage category data
   };
+
   const [rdData, setRdData] = useState(initialValue);
   const [ourTeamImagePreview, setOurTeamImagePreview] = useState(null);
   const [researchImagePreview, setResearchImagePreview] = useState(null);
   const [technologyImagePreview, setTechnologyImagePreview] = useState(null);
-  const navigate = useNavigate();
+  const [newCategory, setNewCategory] = useState({
+    title: "",
+    description: "",
+    image: null,
+  });
   const [errIdMsg, setErrIdMsg] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -49,7 +57,6 @@ const AdminResearchAndDevelopment = () => {
         }
       } catch (error) {
         console.log("error", error);
-        // Handle error if needed
       }
     };
 
@@ -63,7 +70,6 @@ const AdminResearchAndDevelopment = () => {
         [e.target.name]: e.target.files[0],
       });
 
-      // Update image preview if new image selected
       if (e.target.files && e.target.files[0]) {
         const reader = new FileReader();
         reader.onload = () => {
@@ -85,6 +91,47 @@ const AdminResearchAndDevelopment = () => {
     }
   };
 
+  // Category handling functions
+  const handleCategoryChange = (e) => {
+    if (e.target.type === "file") {
+      const file = e.target.files[0];
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setNewCategory({
+          ...newCategory,
+          image: reader.result, // Set image as Base64 string
+        });
+      };
+      if (file) {
+        reader.readAsDataURL(file);
+      }
+    } else {
+      setNewCategory({
+        ...newCategory,
+        [e.target.name]: e.target.value,
+      });
+    }
+  };
+
+  const addCategory = () => {
+    setRdData({
+      ...rdData,
+      categories: [...rdData.categories, newCategory],
+    });
+    setNewCategory({ title: "", description: "", image: null });
+  };
+
+  const updateCategory = (index, updatedCategory) => {
+    const updatedCategories = [...rdData.categories];
+    updatedCategories[index] = updatedCategory;
+    setRdData({ ...rdData, categories: updatedCategories });
+  };
+
+  const deleteCategory = (index) => {
+    const updatedCategories = rdData.categories.filter((_, i) => i !== index);
+    setRdData({ ...rdData, categories: updatedCategories });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
@@ -100,6 +147,12 @@ const AdminResearchAndDevelopment = () => {
     formData.append("technologyImage", rdData.technologyImage);
     formData.append("products", rdData.products);
 
+    rdData.categories.forEach((category, index) => {
+      formData.append(`categories[${index}][title]`, category.title);
+      formData.append(`categories[${index}][description]`, category.description);
+      formData.append(`categories[${index}][image]`, category.image);
+    });
+
     try {
       const response = await postResearchReq(formData);
       toast.success("Research and Development Updated Successfully");
@@ -114,91 +167,113 @@ const AdminResearchAndDevelopment = () => {
 
   return (
     <>
-      <br />
-      <div style={{ height: "100vh" }} id="page-content" className="">
-        <div>
-          {errIdMsg ? (
-            <div className="error_messages login-title themed-background-fire text-center">
-              <p className="text-light">{errIdMsg}</p>
-            </div>
-          ) : (
-            <></>
-          )}
-          <form className={`form-horizontal`}>
-            <div className=" ">
-              <div className="col-xs-4">
-                <label className="form-label">Title </label>
-                {/* <textarea
-                  type="text"
-                  required
-                  onChange={handleChange}
-                  name="heading"
-                  value={rdData && rdData.heading}
-                  className={`form-control input-lg`}
-                  placeholder="Heading"
-                /> */}
-                <CKEditor
-                  editor={ClassicEditor}
-                  data={rdData.heading || ""}
-                  onChange={(event, editor) => {
-                    const data = editor.getData();
-                    setRdData({
-                      ...rdData,
-                      heading: data,
-                    });
-                  }}
-                />
+      <div style={{ height: "100vh" }} id="page-content">
+        {errIdMsg && (
+          <div className="error_messages login-title themed-background-fire text-center">
+            <p className="text-light">{errIdMsg}</p>
+          </div>
+        )}
+        <form className="form-horizontal" onSubmit={handleSubmit}>
+          <div>
+            <label>Title</label>
+            <CKEditor
+              editor={ClassicEditor}
+              data={rdData.heading || ""}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setRdData({ ...rdData, heading: data });
+              }}
+            />
+            <label>Our Team Detail</label>
+            <CKEditor
+              editor={ClassicEditor}
+              data={rdData.ourTeamDetail || ""}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setRdData({ ...rdData, ourTeamDetail: data });
+              }}
+            />
+            <label>Research And Development</label>
+            <CKEditor
+              editor={ClassicEditor}
+              data={rdData.technology || ""}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setRdData({ ...rdData, technology: data });
+              }}
+            />
 
-                <label className="form-label">ParentCat1 ourTeamDetail </label>
-                <CKEditor
-                  editor={ClassicEditor}
-                  data={rdData.test || ""}
-                  onChange={(event, editor) => {
-                    const data = editor.getData();
-                    setRdData({
-                      ...rdData,
-                      test: data,
-                    });
-                  }}
-                />
-              </div>
-
-              <div className="col-xs-8">
-                <label className="form-label">Research And Development </label>
-                {/* <textarea
-                  onChange={handleChange}
-                  className={`form-control input-lg`}
-                  type="textarea"
-                  rows={5}
-                  name="technology"
-                  value={rdData && rdData.technology}
-                  placeholder="Technology"
-                /> */}
-                <CKEditor
-                  editor={ClassicEditor}
-                  data={rdData.technology || ""}
-                  onChange={(event, editor) => {
-                    const data = editor.getData();
-                    setRdData({
-                      ...rdData,
-                      technology: data,
-                    });
-                  }}
-                />
-                
-              </div>
-            </div>
             <div>
-              <button
-                type="submit"
-                onClick={handleSubmit}
-                className="btn btn-primary"
-              >
-                Update R&D
-              </button>
+              <h4>Categories</h4>
+              {rdData.categories.map((category, index) => (
+                <div key={index}>
+                  <input
+                    type="text"
+                    name="title"
+                    value={category.title}
+                    onChange={(e) =>
+                      updateCategory(index, { ...category, title: e.target.value })
+                    }
+                    placeholder="Category Title"
+                  />
+                  <textarea
+                    name="description"
+                    value={category.description}
+                    onChange={(e) =>
+                      updateCategory(index, { ...category, description: e.target.value })
+                    }
+                    placeholder="Category Description"
+                  />
+                  {category.image && (
+                    <img
+                      src={category.image}
+                      alt="Category Preview"
+                      style={{ width: "100px", height: "100px" }}
+                    />
+                  )}
+                  <button type="button" onClick={() => deleteCategory(index)}>
+                    Delete Category
+                  </button>
+                </div>
+              ))}
+              <div>
+                <h5>Add New Category</h5>
+                <input
+                  type="text"
+                  name="title"
+                  value={newCategory.title}
+                  onChange={handleCategoryChange}
+                  placeholder="Category Title"
+                />
+                <textarea
+                  name="description"
+                  value={newCategory.description}
+                  onChange={handleCategoryChange}
+                  placeholder="Category Description"
+                />
+                <input
+                  type="file"
+                  name="image"
+                  onChange={handleCategoryChange}
+                  accept="image/*"
+                />
+                {newCategory.image && (
+                  <img
+                    src={newCategory.image}
+                    alt="New Category Preview"
+                    style={{ width: "100px", height: "100px" }}
+                  />
+                )}
+                <button type="button" onClick={addCategory}>
+                  Add Category
+                </button>
+              </div>
             </div>
-          </form>
-        </div>
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Update R&D
+          </button>
+        </form>
       </div>
     </>
   );
