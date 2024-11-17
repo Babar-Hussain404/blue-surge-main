@@ -3,10 +3,7 @@ import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import {
-  getResearchToConnectReq,
-  postResearchReq,
-} from "./__requests/RequestResearch";
+import { getResearchToConnectReq, postResearchReq } from "./__requests/RequestResearch";
 
 const AdminResearchAndDevelopment = () => {
   const initialValue = {
@@ -21,7 +18,7 @@ const AdminResearchAndDevelopment = () => {
     technology: "",
     technologyImage: "",
     products: [],
-    categories: [], // Categories state to manage category data
+    categories: [], // Categories with parent and subcategories
   };
 
   const [rdData, setRdData] = useState(initialValue);
@@ -29,6 +26,10 @@ const AdminResearchAndDevelopment = () => {
   const [researchImagePreview, setResearchImagePreview] = useState(null);
   const [technologyImagePreview, setTechnologyImagePreview] = useState(null);
   const [newCategory, setNewCategory] = useState({
+    parentCategoryName: "",
+    subcategories: [], // Array of subcategories
+  });
+  const [newSubcategory, setNewSubcategory] = useState({
     title: "",
     description: "",
     image: null,
@@ -91,14 +92,21 @@ const AdminResearchAndDevelopment = () => {
     }
   };
 
-  // Category handling functions
+  // Category and subcategory handling functions
   const handleCategoryChange = (e) => {
+    setNewCategory({
+      ...newCategory,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const handleSubcategoryChange = (e) => {
     if (e.target.type === "file") {
       const file = e.target.files[0];
       const reader = new FileReader();
       reader.onloadend = () => {
-        setNewCategory({
-          ...newCategory,
+        setNewSubcategory({
+          ...newSubcategory,
           image: reader.result, // Set image as Base64 string
         });
       };
@@ -106,11 +114,19 @@ const AdminResearchAndDevelopment = () => {
         reader.readAsDataURL(file);
       }
     } else {
-      setNewCategory({
-        ...newCategory,
+      setNewSubcategory({
+        ...newSubcategory,
         [e.target.name]: e.target.value,
       });
     }
+  };
+
+  const addSubcategory = () => {
+    setNewCategory({
+      ...newCategory,
+      subcategories: [...newCategory.subcategories, newSubcategory],
+    });
+    setNewSubcategory({ title: "", description: "", image: null });
   };
 
   const addCategory = () => {
@@ -118,7 +134,7 @@ const AdminResearchAndDevelopment = () => {
       ...rdData,
       categories: [...rdData.categories, newCategory],
     });
-    setNewCategory({ title: "", description: "", image: null });
+    setNewCategory({ parentCategoryName: "", subcategories: [] });
   };
 
   const updateCategory = (index, updatedCategory) => {
@@ -148,9 +164,12 @@ const AdminResearchAndDevelopment = () => {
     formData.append("products", rdData.products);
 
     rdData.categories.forEach((category, index) => {
-      formData.append(`categories[${index}][title]`, category.title);
-      formData.append(`categories[${index}][description]`, category.description);
-      formData.append(`categories[${index}][image]`, category.image);
+      formData.append(`categories[${index}][parentCategoryName]`, category.parentCategoryName);
+      category.subcategories.forEach((sub, subIndex) => {
+        formData.append(`categories[${index}][subcategories][${subIndex}][title]`, sub.title);
+        formData.append(`categories[${index}][subcategories][${subIndex}][description]`, sub.description);
+        formData.append(`categories[${index}][subcategories][${subIndex}][image]`, sub.image);
+      });
     });
 
     try {
@@ -173,7 +192,7 @@ const AdminResearchAndDevelopment = () => {
             <p className="text-light">{errIdMsg}</p>
           </div>
         )}
-        <form className="form-horizontal" onSubmit={handleSubmit}>
+        <form className="form-horizontal" onSubmit={handleSubmit} style={{marginTop: '40px'}}>
           <div>
             <label>Title</label>
             <CKEditor
@@ -184,15 +203,16 @@ const AdminResearchAndDevelopment = () => {
                 setRdData({ ...rdData, heading: data });
               }}
             />
-            <label>Our Team Detail</label>
+            <label>Heading Paragraph</label>
             <CKEditor
               editor={ClassicEditor}
-              data={rdData.ourTeamDetail || ""}
+              data={rdData.headingParagraph || ""}
               onChange={(event, editor) => {
                 const data = editor.getData();
-                setRdData({ ...rdData, ourTeamDetail: data });
+                setRdData({ ...rdData, headingParagraph: data });
               }}
             />
+
             <label>Research And Development</label>
             <CKEditor
               editor={ClassicEditor}
@@ -202,6 +222,26 @@ const AdminResearchAndDevelopment = () => {
                 setRdData({ ...rdData, technology: data });
               }}
             />
+            
+            <label>Innovation Title</label>
+            <CKEditor
+              editor={ClassicEditor}
+              data={rdData.ourTeam || ""}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setRdData({ ...rdData, ourTeam: data });
+              }}
+            />
+            <label>Innovation Detail</label>
+            <CKEditor
+              editor={ClassicEditor}
+              data={rdData.ourTeamDetail || ""}
+              onChange={(event, editor) => {
+                const data = editor.getData();
+                setRdData({ ...rdData, ourTeamDetail: data });
+              }}
+            />
+            
 
             <div>
               <h4>Categories</h4>
@@ -209,61 +249,82 @@ const AdminResearchAndDevelopment = () => {
                 <div key={index}>
                   <input
                     type="text"
-                    name="title"
-                    value={category.title}
+                    name="parentCategoryName"
+                    value={category.parentCategoryName}
                     onChange={(e) =>
-                      updateCategory(index, { ...category, title: e.target.value })
+                      updateCategory(index, { ...category, parentCategoryName: e.target.value })
                     }
-                    placeholder="Category Title"
+                    placeholder="Parent Category Name"
                   />
-                  <textarea
-                    name="description"
-                    value={category.description}
-                    onChange={(e) =>
-                      updateCategory(index, { ...category, description: e.target.value })
-                    }
-                    placeholder="Category Description"
-                  />
-                  {category.image && (
-                    <img
-                      src={category.image}
-                      alt="Category Preview"
-                      style={{ width: "100px", height: "100px" }}
-                    />
-                  )}
-                  <button type="button" onClick={() => deleteCategory(index)}>
-                    Delete Category
-                  </button>
+                  <h5>Subcategories</h5>
+                  {category.subcategories.map((sub, subIndex) => (
+                    <div key={subIndex}>
+                      <input
+                        type="text"
+                        name="title"
+                        value={sub.title}
+                        onChange={(e) =>
+                          updateCategory(index, {
+                            ...category,
+                            subcategories: category.subcategories.map((s, i) =>
+                              i === subIndex ? { ...s, title: e.target.value } : s
+                            ),
+                          })
+                        }
+                        placeholder="Subcategory Title"
+                      />
+                      <textarea
+                        name="description"
+                        value={sub.description}
+                        onChange={(e) =>
+                          updateCategory(index, {
+                            ...category,
+                            subcategories: category.subcategories.map((s, i) =>
+                              i === subIndex ? { ...s, description: e.target.value } : s
+                            ),
+                          })
+                        }
+                        placeholder="Subcategory Description"
+                      />
+                      {sub.image && (
+                        <img src={sub.image} alt="Subcategory Preview" style={{ width: "100px", height: "100px" }} />
+                      )}
+                    </div>
+                  ))}
                 </div>
               ))}
               <div>
                 <h5>Add New Category</h5>
                 <input
                   type="text"
-                  name="title"
-                  value={newCategory.title}
+                  name="parentCategoryName"
+                  value={newCategory.parentCategoryName}
                   onChange={handleCategoryChange}
-                  placeholder="Category Title"
+                  placeholder="Parent Category Name"
+                />
+                <h6>Add New Subcategory</h6>
+                <input
+                  type="text"
+                  name="title"
+                  value={newSubcategory.title}
+                  onChange={handleSubcategoryChange}
+                  placeholder="Subcategory Title"
                 />
                 <textarea
                   name="description"
-                  value={newCategory.description}
-                  onChange={handleCategoryChange}
-                  placeholder="Category Description"
+                  value={newSubcategory.description}
+                  onChange={handleSubcategoryChange}
+                  placeholder="Subcategory Description"
                 />
                 <input
                   type="file"
                   name="image"
-                  onChange={handleCategoryChange}
+                  onChange={handleSubcategoryChange}
                   accept="image/*"
                 />
-                {newCategory.image && (
-                  <img
-                    src={newCategory.image}
-                    alt="New Category Preview"
-                    style={{ width: "100px", height: "100px" }}
-                  />
-                )}
+                <button type="button" onClick={addSubcategory}>
+                  Add Subcategory
+                </button>
                 <button type="button" onClick={addCategory}>
                   Add Category
                 </button>

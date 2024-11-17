@@ -12,7 +12,12 @@ const rdSchema = new mongoose.Schema(
     researchImage: { type: String, default: "" },
     test: { type: String, default: "" },
     technologyImage: { type: String, default: "" },
-    categories: [categorySchema], // Categories field as an array of subdocuments
+    categories: [
+      {
+        parentCategoryName: { type: String, default: "" },
+        subcategories: { type: [categorySchema], default: [] }, // Nullable array of subcategories
+      },
+    ]
   },
   { timestamps: true }
 );
