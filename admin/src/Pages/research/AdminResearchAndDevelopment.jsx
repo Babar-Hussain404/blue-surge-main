@@ -162,15 +162,17 @@ const AdminResearchAndDevelopment = () => {
     formData.append("test", rdData.test);
     formData.append("technologyImage", rdData.technologyImage);
     formData.append("products", rdData.products);
-
-    rdData.categories.forEach((category, index) => {
-      formData.append(`categories[${index}][parentCategoryName]`, category.parentCategoryName);
-      category.subcategories.forEach((sub, subIndex) => {
-        formData.append(`categories[${index}][subcategories][${subIndex}][title]`, sub.title);
-        formData.append(`categories[${index}][subcategories][${subIndex}][description]`, sub.description);
-        formData.append(`categories[${index}][subcategories][${subIndex}][image]`, sub.image);
-      });
-    });
+    debugger
+    // Serialize categories as a JSON string
+    formData.append("categories", JSON.stringify(rdData.categories));
+    // rdData.categories.forEach((category, index) => {
+    //   formData.append(`categories[${index}][parentCategoryName]`, category.parentCategoryName);
+    //   category.subcategories.forEach((sub, subIndex) => {
+    //     formData.append(`categories[${index}][subcategories][${subIndex}][title]`, sub.title);
+    //     formData.append(`categories[${index}][subcategories][${subIndex}][description]`, sub.description);
+    //     formData.append(`categories[${index}][subcategories][${subIndex}][image]`, sub.image);
+    //   });
+    // });
 
     try {
       const response = await postResearchReq(formData);
@@ -186,64 +188,73 @@ const AdminResearchAndDevelopment = () => {
 
   return (
     <>
-      <div style={{ height: "100vh" }} id="page-content">
+      <div 
+      // style={{ height: "100vh" }}
+      id="page-content">
         {errIdMsg && (
           <div className="error_messages login-title themed-background-fire text-center">
             <p className="text-light">{errIdMsg}</p>
           </div>
         )}
         <form className="form-horizontal" onSubmit={handleSubmit} style={{marginTop: '40px'}}>
-          <div>
-            <label>Title</label>
-            <CKEditor
-              editor={ClassicEditor}
-              data={rdData.heading || ""}
-              onChange={(event, editor) => {
-                const data = editor.getData();
-                setRdData({ ...rdData, heading: data });
-              }}
-            />
-            <label>Heading Paragraph</label>
-            <CKEditor
-              editor={ClassicEditor}
-              data={rdData.headingParagraph || ""}
-              onChange={(event, editor) => {
-                const data = editor.getData();
-                setRdData({ ...rdData, headingParagraph: data });
-              }}
-            />
-
-            <label>Research And Development</label>
-            <CKEditor
-              editor={ClassicEditor}
-              data={rdData.technology || ""}
-              onChange={(event, editor) => {
-                const data = editor.getData();
-                setRdData({ ...rdData, technology: data });
-              }}
-            />
-            
-            <label>Innovation Title</label>
-            <CKEditor
-              editor={ClassicEditor}
-              data={rdData.ourTeam || ""}
-              onChange={(event, editor) => {
-                const data = editor.getData();
-                setRdData({ ...rdData, ourTeam: data });
-              }}
-            />
-            <label>Innovation Detail</label>
-            <CKEditor
-              editor={ClassicEditor}
-              data={rdData.ourTeamDetail || ""}
-              onChange={(event, editor) => {
-                const data = editor.getData();
-                setRdData({ ...rdData, ourTeamDetail: data });
-              }}
-            />
-            
-
+          <div className="col-md-7">
             <div>
+              <label>Heading Title</label>
+              <CKEditor
+                editor={ClassicEditor}
+                data={rdData.heading || ""}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  setRdData({ ...rdData, heading: data });
+                }}
+              />
+            </div>
+            <div>
+              <label>Research And Development</label>
+              <CKEditor
+                editor={ClassicEditor}
+                data={rdData.technology || ""}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  setRdData({ ...rdData, technology: data });
+                }}
+              />
+            </div>
+            <div>
+              <label>Heading Paragraph</label>
+              <CKEditor
+                editor={ClassicEditor}
+                data={rdData.headingParagraph || ""}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  setRdData({ ...rdData, headingParagraph: data });
+                }}
+              />
+            </div>
+            <div>
+              <label>Innovation Title</label>
+              <CKEditor
+                editor={ClassicEditor}
+                data={rdData.ourTeam || ""}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  setRdData({ ...rdData, ourTeam: data });
+                }}
+              />
+            </div>
+            <div>
+              <label>Innovation Detail</label>
+              <CKEditor
+                editor={ClassicEditor}
+                data={rdData.ourTeamDetail || ""}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  setRdData({ ...rdData, ourTeamDetail: data });
+                }}
+              />
+            </div>
+          </div>
+            <div className="col-md-5">
               <h4>Categories</h4>
               {rdData.categories.map((category, index) => (
                 <div key={index}>
@@ -330,7 +341,6 @@ const AdminResearchAndDevelopment = () => {
                 </button>
               </div>
             </div>
-          </div>
           <button type="submit" className="btn btn-primary">
             Update R&D
           </button>

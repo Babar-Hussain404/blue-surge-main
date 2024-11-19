@@ -5,6 +5,8 @@ const { v4: uuidv4 } = require("uuid");
 
 exports.store = async (req, res, next) => {
   try {
+    console.log("Incoming categories payload:", req.body.categories);
+
     const uploadDir = path.join(__dirname, "..", "../uploads");
     const moveFile = async (file) => {
       const fileExtension = path.extname(file.name);
@@ -38,7 +40,14 @@ exports.store = async (req, res, next) => {
       researchImage: missionImageName,
       technologyImage: visionImageName,
     };
-    const rd = await RD.findOneAndUpdate({}, payload, {
+    const rd = await RD.findOneAndUpdate({}, 
+      {
+    $set: {
+      ...payload,
+      categories: payload.categories, // Replace existing categories
+    },
+  }
+  , {
       new: true,
       upsert: true,
     });
