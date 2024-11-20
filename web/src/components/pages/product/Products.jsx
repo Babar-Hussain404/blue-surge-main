@@ -50,21 +50,21 @@ const Products = ({ headertData, metaTagsData }) => {
   const getProductsData = async () => {
     setProductLoading(true);
     try {
-      //  ? await axios.get(`https://web.bluesurge.com.pk/product/filter/${selectedIds.join(',')}/${serviceSelectedIds.join(',')}`)
+      //  ? await axios.get(`${process.env.REACT_APP_BASE_URL}/product/filter/${selectedIds.join(',')}/${serviceSelectedIds.join(',')}`)
 
       let response;
       if (selectedIds?.length > 0 && serviceSelectedIds?.length > 0) {
         response = await axios.get(
-          `https://web.bluesurge.com.pk/product/filter/${selectedIds.join(
+          `${process.env.REACT_APP_BASE_URL}/product/filter/${selectedIds.join(
             ","
           )}/${serviceSelectedIds.join(",")}`
         );
       } else if (selectedIds?.length > 0) {
         response = await axios.get(
-          `https://web.bluesurge.com.pk/product/industry/filter/${selectedIds}`
+          `${process.env.REACT_APP_BASE_URL}/product/industry/filter/${selectedIds}`
         );
       } else {
-        response = await axios.get(`https://web.bluesurge.com.pk/product`);
+        response = await axios.get(`${process.env.REACT_APP_BASE_URL}/product`);
       }
       setProducts(response.data.products);
       setTotalPages(response.data.meta.totalPages);
@@ -117,7 +117,7 @@ const Products = ({ headertData, metaTagsData }) => {
     setServiceLoading(true);
     try {
       const response = await axios.get(
-        `https://web.bluesurge.com.pk/service?page=${page}`
+        `${process.env.REACT_APP_BASE_URL}/service?page=${page}`
       );
       setService(response.data.services);
       setTotalPages(response.data.meta.totalPages);
@@ -142,7 +142,7 @@ const Products = ({ headertData, metaTagsData }) => {
     setIndustryLoading(true);
     try {
       const response = await axios.get(
-        `https://web.bluesurge.com.pk/industry?page=${page}`
+        `${process.env.REACT_APP_BASE_URL}/industry?page=${page}`
       );
       setIndustryProducts(response.data.industrys);
       setIndustryLoading(false);
@@ -220,7 +220,7 @@ const Products = ({ headertData, metaTagsData }) => {
         }
         backgroundImage={
           headertData && headertData.productImage
-            ? `https://admin.bluesurge.com.pk/uploads/${headertData.productImage}`
+            ? `${process.env.REACT_APP_IMAGE_URL}/${headertData.productImage}`
             : headerImg
         }
         showButton={false}
@@ -396,7 +396,7 @@ const Products = ({ headertData, metaTagsData }) => {
                         >
                           <Card.Img
                             variant="top"
-                            src={`https://admin.bluesurge.com.pk/uploads/${
+                            src={`${process.env.REACT_APP_IMAGE_URL}/${
                               product && product.thumbnailImage
                             }`}
                             style={{ height: "200px" }}

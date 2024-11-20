@@ -39,7 +39,7 @@ const AboutBusiness = () => {
   const getAboutTeamData = async () => {
     try {
       const response = await axios.get(
-        `https://web.bluesurge.com.pk/industry/list`
+        `${process.env.REACT_APP_BASE_URL}/industry/list`
       );
       setPartnerData(response.data.industries);
       setPartnerLoading(false);

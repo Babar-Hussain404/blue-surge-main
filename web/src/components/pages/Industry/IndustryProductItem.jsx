@@ -22,7 +22,7 @@ const [partnerLoading, setPartnerLoading] = useState(true);
 const getAboutTeamData = async () => {
   try {
     const response = await axios.get(
-      `https://web.bluesurge.com.pk/product/industry/${id}`
+      `${process.env.REACT_APP_BASE_URL}/product/industry/${id}`
     ); 
     setPartnerData(response.data.products);
     setPartnerLoading(false);
@@ -46,7 +46,7 @@ useEffect(() => {
           
             <div key={index} className="industry_detail_product_card">
               <img
-                src={`https://admin.bluesurge.com.pk/uploads/${item.thumbnailImage}`}
+                src={`${process.env.REACT_APP_IMAGE_URL}/${item.thumbnailImage}`}
                 alt="Card 3"
                 className="industry_detail_product_img"
               />

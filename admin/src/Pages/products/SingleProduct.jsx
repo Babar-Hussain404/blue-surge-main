@@ -113,7 +113,7 @@
 //                 <br />
 //                 <img
 //                   style={{ width: "400px" }}
-//                   src={`https://admin.bluesurge.com.pk/uploads/${
+//                   src={`${process.env.REACT_APP_IMAGE_URL}/${
 //                     contactData && contactData?.thumbnailImage
 //                   }`}
 //                 />
@@ -126,7 +126,7 @@
 //                 <br />
 //                 <img
 //                   style={{ width: "200px" }}
-//                   src={`https://admin.bluesurge.com.pk/uploads/${
+//                   src={`${process.env.REACT_APP_IMAGE_URL}/${
 //                     contactData && contactData?.detailImage
 //                   }`}
 //                 />
@@ -140,7 +140,7 @@
 //                   {contactData && contactData?.video && (
 //                     <video controls style={{ maxWidth: "70%" }}>
 //                       <source
-//                         src={`https://admin.bluesurge.com.pk/uploads/${contactData?.video}`}
+//                         src={`${process.env.REACT_APP_IMAGE_URL}/${contactData?.video}`}
 //                         type="video/mp4"
 //                       />
 //                       Your browser does not support the video tag.
@@ -277,7 +277,7 @@ const SingleProduct = ({ singleContactLoading, setSingleContactLoading }) => {
                 {contactData?.thumbnailImage ? (
                   <img
                     style={{ width: "400px" }}
-                    src={`https://admin.bluesurge.com.pk/uploads/${contactData.thumbnailImage}`}
+                    src={`${process.env.REACT_APP_IMAGE_URL}/${contactData.thumbnailImage}`}
                     alt="Thumbnail"
                   />
                 ) : (
@@ -293,7 +293,7 @@ const SingleProduct = ({ singleContactLoading, setSingleContactLoading }) => {
                 {contactData?.detailImage ? (
                   <img
                     style={{ width: "200px" }}
-                    src={`https://admin.bluesurge.com.pk/uploads/${contactData.detailImage}`}
+                    src={`${process.env.REACT_APP_IMAGE_URL}/${contactData.detailImage}`}
                     alt="Detail"
                   />
                 ) : (
@@ -308,7 +308,7 @@ const SingleProduct = ({ singleContactLoading, setSingleContactLoading }) => {
                   <br />
                   <video controls style={{ maxWidth: "70%" }}>
                     <source
-                      src={`https://admin.bluesurge.com.pk/uploads/${contactData.video}`}
+                      src={`${process.env.REACT_APP_IMAGE_URL}/${contactData.video}`}
                       type="video/mp4"
                     />
                     Your browser does not support the video tag.

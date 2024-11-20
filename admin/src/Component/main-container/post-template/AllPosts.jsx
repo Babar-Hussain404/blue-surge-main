@@ -348,7 +348,7 @@ const AllPosts = () => {
                     <img
                       src={`${
                         post.userData.profilePicture
-                          ? `https://admin.bluesurge.com.pk/uploads/${post.userData.profilePicture}`
+                          ? `${process.env.REACT_APP_IMAGE_URL}/${post.userData.profilePicture}`
                           : `img/placeholders/avatars/avatar2.jpg`
                       }`}
                       alt="avatar"
@@ -439,7 +439,7 @@ const AllPosts = () => {
                         <img
                           src={`${
                             loginUser.profilePicture
-                              ? `https://admin.bluesurge.com.pk/uploads/${loginUser.profilePicture}`
+                              ? `${process.env.REACT_APP_IMAGE_URL}/${loginUser.profilePicture}`
                               : `img/placeholders/avatars/avatar2.jpg`
                           }`}
                           alt="avatar"
@@ -564,7 +564,7 @@ const AllPosts = () => {
                             <img
                               src={
                                 comment.profilePicture
-                                  ? `https://admin.bluesurge.com.pk/uploads/${comment.profilePicture}`
+                                  ? `${process.env.REACT_APP_IMAGE_URL}/${comment.profilePicture}`
                                   : `img/placeholders/avatars/avatar2.jpg`
                               }
                               alt="Avatar"
@@ -730,7 +730,7 @@ const AllPosts = () => {
                                 <p>{comment.content}</p>
 
                                 {/* <img
-                                  src={`https://admin.bluesurge.com.pk/uploads/${comment.replyphotos[0].url}`}
+                                  src={`${process.env.REACT_APP_IMAGE_URL}/${comment.replyphotos[0].url}`}
                                   alt="avatar"
                                   className="widget-image img-circle pull-left img_circle_border"
                                 /> */}

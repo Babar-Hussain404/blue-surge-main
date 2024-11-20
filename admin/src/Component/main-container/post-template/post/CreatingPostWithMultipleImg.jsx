@@ -1,9 +1,9 @@
 const CreatingPostWithMultipleImg = ({ post, post1 }) => {
   const thirdImageBlurStyle = post.length >= 3 ? { filter: "blur(5px)" } : {};
   const remainingImageCount = post.length > 2 ? post.length - 2 : 0;
-  const imageUrl1 = `https://admin.bluesurge.com.pk/uploads/${post[0].url}`;
-  const imageUrl2 = `https://admin.bluesurge.com.pk/uploads/${post[1].url}`;
-  const imageUrl3 = `https://admin.bluesurge.com.pk/uploads/${post[2].url}`;
+  const imageUrl1 = `${process.env.REACT_APP_IMAGE_URL}/${post[0].url}`;
+  const imageUrl2 = `${process.env.REACT_APP_IMAGE_URL}/${post[1].url}`;
+  const imageUrl3 = `${process.env.REACT_APP_IMAGE_URL}/${post[2].url}`;
   return (
     <>
       {post[0].url || post[1].url || post[2].url ? (

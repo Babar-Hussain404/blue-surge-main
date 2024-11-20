@@ -1,18 +1,18 @@
 import { ApiFetchReq } from "../../../api/ApiRequest";
 
 export const getHeaderToConnectReq = async () => {
-  return await ApiFetchReq("GET", `https://web.bluesurge.com.pk/header`);
+  return await ApiFetchReq("GET", `${process.env.REACT_APP_BASE_URL}/header`);
 };
 export const getAboutTeamReq = async (page) => {
   return await ApiFetchReq(
     "GET",
-    `https://web.bluesurge.com.pk/about/team/pagination?page=${page}`
+    `${process.env.REACT_APP_BASE_URL}/about/team/pagination?page=${page}`
   );
 };
 export const postHeaderReq = async (data) => {
   return await ApiFetchReq(
     "POST",
-    `https://web.bluesurge.com.pk/header`,
+    `${process.env.REACT_APP_BASE_URL}/header`,
     data
   );
 };
@@ -20,7 +20,7 @@ export const postHeaderReq = async (data) => {
 export const postAboutTeamReq = async (data) => {
   return await ApiFetchReq(
     "POST",
-    `https://web.bluesurge.com.pk/about/team`,
+    `${process.env.REACT_APP_BASE_URL}/about/team`,
     data
   );
 };
@@ -28,14 +28,14 @@ export const postAboutTeamReq = async (data) => {
 export const deleteTeamReq = async (id) => {
   return await ApiFetchReq(
     "DELETE",
-    `https://web.bluesurge.com.pk/about/team/${id}`
+    `${process.env.REACT_APP_BASE_URL}/about/team/${id}`
   );
 };
 
 export const postAboutTeamMemberReq = async (id,data) => {
   return await ApiFetchReq(
     "PUT",
-    `https://web.bluesurge.com.pk/about/team/${id}`,
+    `${process.env.REACT_APP_BASE_URL}/about/team/${id}`,
     data
   );
 };

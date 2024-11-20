@@ -33,7 +33,7 @@ function App() {
     try {
       setLoadingData(true);
       const response = await axios.get(
-        `https://web.bluesurge.com.pk/header`
+        `${process.env.REACT_APP_BASE_URL}/header`
       );
       setHeaderData(response.data.header);
       setLoadingData(false);
@@ -47,7 +47,7 @@ function App() {
   const getMetaTagsData = async () => {
     try {
       const response = await axios.get(
-        `https://web.bluesurge.com.pk/metatags`
+        `${process.env.REACT_APP_BASE_URL}/metatags`
       );
       setMetaTagsData(response.data.metaTags);
       setMetaTagsLoadingData(false);

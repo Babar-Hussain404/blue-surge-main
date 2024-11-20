@@ -1,7 +1,7 @@
 import React from "react";
 
 const CreatePostWithOneImg = ({ post }) => {
-  const imageUrl = `https://admin.bluesurge.com.pk/uploads/${post[0].url}`;
+  const imageUrl = `${process.env.REACT_APP_IMAGE_URL}/${post[0].url}`;
 
   return (
     <div className="col-xs-12">

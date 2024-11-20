@@ -32,15 +32,15 @@ const Research = () => {
         setRdData(response.data.rd);
 
         if (response.data.rd.ourTeamImage) {
-          const ourTeamImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.rd.ourTeamImage}`;
+          const ourTeamImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.rd.ourTeamImage}`;
           setOurTeamImagePreview(ourTeamImageUrl);
         }
         if (response.data.rd.researchImage) {
-          const researchImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.rd.researchImage}`;
+          const researchImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.rd.researchImage}`;
           setResearchImagePreview(researchImageUrl);
         }
         if (response.data.rd.technologyImage) {
-          const technologyImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.rd.technologyImage}`;
+          const technologyImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.rd.technologyImage}`;
           setTechnologyImagePreview(technologyImageUrl);
         }
       } catch (error) {

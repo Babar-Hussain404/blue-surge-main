@@ -148,7 +148,7 @@ const TeamList = () => {
                                           <img
                                             style={{ width: "5rem" }}
                                             className="widget-image img-circle  img_circle_border"
-                                            src={`https://admin.bluesurge.com.pk/uploads/${contact.image}`}
+                                            src={`${process.env.REACT_APP_IMAGE_URL}/${contact.image}`}
                                           />
                                         </td>
                                         <td className="visible-lg text-center">

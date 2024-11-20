@@ -8,7 +8,7 @@ const HomeAbout2 = () => {
   const getAboutData = async (page) => {
     try {
       const response = await axios.get(
-        `https://web.bluesurge.com.pk/aboutus`
+        `${process.env.REACT_APP_BASE_URL}/aboutus`
       );
       setAboutData(response.data.about);
       setAboutLoading(false);
@@ -77,7 +77,7 @@ const HomeAbout2 = () => {
                   <img
                     className="img_heightwidth"
                     // src={img}
-                    src={`https://admin.bluesurge.com.pk/uploads/${aboutData.whoWeAreImage}`}
+                    src={`${process.env.REACT_APP_IMAGE_URL}/${aboutData.whoWeAreImage}`}
                     alt=""
                   />
                 </div>

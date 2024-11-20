@@ -35,7 +35,7 @@ const Login = ({ formType, toggleForm }) => {
     }
     try {
       const response = await axios.post(
-        `https://web.bluesurge.com.pk/user/login`,
+        `${process.env.REACT_APP_BASE_URL}/user/login`,
         signUpData
       );
       const { token } = response.data;

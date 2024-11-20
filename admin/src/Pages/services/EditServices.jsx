@@ -184,12 +184,12 @@ const EditServices = () => {
         detailImage: formData.detailImage,
       });
       if (formData.thumbnailImage) {
-        const thumbnailImage = `https://admin.bluesurge.com.pk/uploads/${formData.thumbnailImage}`;
+        const thumbnailImage = `${process.env.REACT_APP_IMAGE_URL}/${formData.thumbnailImage}`;
         setImagePreview(thumbnailImage); // Set preview for the old image
       }
 
       if (formData.detailImage) {
-        const detailImage = `https://admin.bluesurge.com.pk/uploads/${formData.detailImage}`;
+        const detailImage = `${process.env.REACT_APP_IMAGE_URL}/${formData.detailImage}`;
         setImagePreview2(detailImage); // Set preview for the old logo
       }
     } catch (error) {

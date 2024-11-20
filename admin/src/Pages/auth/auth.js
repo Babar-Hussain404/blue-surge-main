@@ -149,7 +149,7 @@
 //     }
 //     try {
 //       const response = await axios.post(
-//         `https://web.bluesurge.com.pk/fruit/user/forget-password`,
+//         `${process.env.REACT_APP_BASE_URL}/fruit/user/forget-password`,
 //         emailResend
 //       );
 //       toggleForm("Login");
@@ -264,7 +264,7 @@
 //     }
 //     try {
 //       const response = await axios.post(
-//         `https://web.bluesurge.com.pk/fruit/user/login`,
+//         `${process.env.REACT_APP_BASE_URL}/fruit/user/login`,
 //         signUpData
 //       );
 //       const { token } = response.data;
@@ -550,7 +550,7 @@
 //     }
 //     try {
 //       const response = await axios.post(
-//         `https://web.bluesurge.com.pk/fruit/user/otp-resend`,
+//         `${process.env.REACT_APP_BASE_URL}/fruit/user/otp-resend`,
 //         emailResend
 //       );
 //       toggleForm("Email Verification");
@@ -683,7 +683,7 @@
 //     }
 //     try {
 //       const response = await axios.post(
-//         `https://web.bluesurge.com.pk/fruit/user/otp-request`,
+//         `${process.env.REACT_APP_BASE_URL}/fruit/user/otp-request`,
 //         signUpData
 //       );
 //       const { token } = response.data;
@@ -859,7 +859,7 @@
 //     }
 //     try {
 //       const response = await axios.post(
-//         `https://web.bluesurge.com.pk/fruit/user/`,
+//         `${process.env.REACT_APP_BASE_URL}/fruit/user/`,
 //         signUpData
 //       );
 //       toggleForm("Email Verification");

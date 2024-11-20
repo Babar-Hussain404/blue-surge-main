@@ -1,6 +1,6 @@
 const CreatingPostWithTwoImg = ({ post }) => {
-  const imageUrl1 = `https://admin.bluesurge.com.pk/uploads/${post[0].url}`;
-  const imageUrl2 = `https://admin.bluesurge.com.pk/uploads/${post[1].url}`;
+  const imageUrl1 = `${process.env.REACT_APP_IMAGE_URL}/${post[0].url}`;
+  const imageUrl2 = `${process.env.REACT_APP_IMAGE_URL}/${post[1].url}`;
 
   return (
     <>

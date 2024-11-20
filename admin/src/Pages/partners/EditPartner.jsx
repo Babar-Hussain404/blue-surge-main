@@ -64,10 +64,10 @@ const EditPartner = ({ setAddState, setContactLoading }) => {
   const getSingleTeamData = async (page) => {
     // setProductLoading(true)
     try {
-      const response = await axios.get(`https://web.bluesurge.com.pk/partners/${teamMemberEditReducer}`);
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/partners/${teamMemberEditReducer}`);
       setTeamData(response.data.partner);
       if (response.data.partner.image) {
-        const image = `https://admin.bluesurge.com.pk/uploads/${response.data.partner.image}`;
+        const image = `${process.env.REACT_APP_IMAGE_URL}/${response.data.partner.image}`;
         setImagePreview(image);
       }
     } catch (error) {

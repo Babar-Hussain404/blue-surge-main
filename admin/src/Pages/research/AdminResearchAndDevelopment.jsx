@@ -45,13 +45,13 @@ const AdminResearchAndDevelopment = () => {
         setcategoriesData(JSON.parse(response.data.rd.research) || {});
 
         if (response.data.rd.ourTeamImage) {
-          setOurTeamImagePreview(`https://admin.bluesurge.com.pk/uploads/${response.data.rd.ourTeamImage}`);
+          setOurTeamImagePreview(`${process.env.REACT_APP_IMAGE_URL}/uploads/${response.data.rd.ourTeamImage}`);
         }
         if (response.data.rd.researchImage) {
-          setResearchImagePreview(`https://admin.bluesurge.com.pk/uploads/${response.data.rd.researchImage}`);
+          setResearchImagePreview(`${process.env.REACT_APP_IMAGE_URL}/uploads/${response.data.rd.researchImage}`);
         }
         if (response.data.rd.technologyImage) {
-          setTechnologyImagePreview(`https://admin.bluesurge.com.pk/uploads/${response.data.rd.technologyImage}`);
+          setTechnologyImagePreview(`${process.env.REACT_APP_IMAGE_URL}/uploads/${response.data.rd.technologyImage}`);
         }
       } catch (error) {
         console.error("Error fetching data:", error);

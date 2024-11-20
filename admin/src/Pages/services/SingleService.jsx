@@ -107,7 +107,7 @@ const SingleService = ({ singleContactLoading, setSingleContactLoading }) => {
                 <br />
                 <img
                   style={{ width: "400px" }}
-                  src={`https://admin.bluesurge.com.pk/uploads/${
+                  src={`${process.env.REACT_APP_IMAGE_URL}/${
                     contactData && contactData.thumbnailImage
                   }`}
                 />
@@ -120,7 +120,7 @@ const SingleService = ({ singleContactLoading, setSingleContactLoading }) => {
                 <br />
                 <img
                   style={{ width: "200px" }}
-                  src={`https://admin.bluesurge.com.pk/uploads/${
+                  src={`${process.env.REACT_APP_IMAGE_URL}/${
                     contactData && contactData.detailImage
                   }`}
                 />

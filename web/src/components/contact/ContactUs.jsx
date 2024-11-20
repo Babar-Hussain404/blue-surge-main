@@ -63,7 +63,7 @@ const ContactUs = ({ headertData, metaTagsData }) => {
     }
     try {
       const response = await axios.post(
-        `https://web.bluesurge.com.pk/contactus`,
+        `${process.env.REACT_APP_BASE_URL}/contactus`,
         formData
       );
       setFormData(initialValues);
@@ -122,7 +122,7 @@ const ContactUs = ({ headertData, metaTagsData }) => {
         }
         backgroundImage={
           headertData && headertData.contactImage
-            ? `https://admin.bluesurge.com.pk/uploads/${headertData.contactImage}`
+            ? `${process.env.REACT_APP_IMAGE_URL}/${headertData.contactImage}`
             : ""
         }
         showButton={false}

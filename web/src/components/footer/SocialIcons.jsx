@@ -13,7 +13,7 @@ const SocialIcons = () => {
       const getProductsData = async (page) => {
         setSocilaLoading(true)
       try {
-        const response = await axios.get(`https://web.bluesurge.com.pk/icons`);
+        const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/icons`);
         setSocilaLinks(response.data.icons);
         dipatch(mailData(response.data.icons.mail))
         setSocilaLoading(false)

@@ -33,7 +33,7 @@ const OtpVerification = ({ formType, toggleForm }) => {
     }
     try {
       const response = await axios.post(
-        `https://web.bluesurge.com.pk/fruit/user/otp-request`,
+        `${process.env.REACT_APP_BASE_URL}/fruit/user/otp-request`,
         signUpData
       );
       const { token } = response.data;

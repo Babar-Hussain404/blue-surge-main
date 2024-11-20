@@ -64,43 +64,43 @@ const Header = () => {
         setHeaderData(response.data.header);
         setHeaderLoading(false);
         if (response.data.header.homeImage) {
-          const homeImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.header.homeImage}`;
+          const homeImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.header.homeImage}`;
           setOldHomeImagePreview(homeImageUrl);
         }
         if (response.data.header.aboutImage) {
-          const aboutImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.header.aboutImage}`;
+          const aboutImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.header.aboutImage}`;
           setOldAboutImagePreview(aboutImageUrl);
         }
         if (response.data.header.productImage) {
-          const productImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.header.productImage}`;
+          const productImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.header.productImage}`;
           setOldProductImagePreview(productImageUrl);
         }
         if (response.data.header.productDetailImage) {
-          const productDetailImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.header.productDetailImage}`;
+          const productDetailImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.header.productDetailImage}`;
           setOldProductDetailImagePreview(productDetailImageUrl);
         }
         if (response.data.header.serviceImage) {
-          const serviceImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.header.serviceImage}`;
+          const serviceImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.header.serviceImage}`;
           setOldServiceImagePreview(serviceImageUrl);
         }
         if (response.data.header.serviceDetailImage) {
-          const serviceDetailImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.header.serviceDetailImage}`;
+          const serviceDetailImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.header.serviceDetailImage}`;
           setOldServiceDetailImagePreview(serviceDetailImageUrl);
         }
         if (response.data.header.researchImage) {
-          const researchImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.header.researchImage}`;
+          const researchImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.header.researchImage}`;
           setOldResearchImagePreview(researchImageUrl);
         }
         if (response.data.header.businessImage) {
-          const businessImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.header.businessImage}`;
+          const businessImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.header.businessImage}`;
           setOldBusinessImagePreview(businessImageUrl);
         }
         if (response.data.header.businessDetailImage) {
-          const businessDetailImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.header.businessDetailImage}`;
+          const businessDetailImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.header.businessDetailImage}`;
           setOldBusinessDetailImagePreview(businessDetailImageUrl);
         }
         if (response.data.header.contactImage) {
-          const contactImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.header.contactImage}`;
+          const contactImageUrl = `${process.env.REACT_APP_IMAGE_URL}/${response.data.header.contactImage}`;
           setOldContactImagePreview(contactImageUrl);
         }
       } catch (error) {

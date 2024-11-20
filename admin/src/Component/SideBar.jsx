@@ -70,7 +70,7 @@ const SideBar = () => {
                   <img
                     src={`${
                       loginUser.profilePicture
-                        ? `https://admin.bluesurge.com.pk/uploads/${loginUser.profilePicture}`
+                        ? `${process.env.REACT_APP_IMAGE_URL}/${loginUser.profilePicture}`
                         : `img/placeholders/avatars/avatar.jpg`
                     }`}
                     alt="avatar"

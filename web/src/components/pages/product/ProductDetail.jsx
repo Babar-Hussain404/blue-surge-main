@@ -42,7 +42,7 @@ const ProductDetail = () => {
     setProductLoading(true);
     try {
       const response = await axios.get(
-        `https://web.bluesurge.com.pk/product/${id}`
+        `${process.env.REACT_APP_BASE_URL}/product/${id}`
       );
       const formData = response.data.product;
       const featuresArray = formData.features.map((item) => JSON.parse(item));
@@ -121,7 +121,7 @@ const ProductDetail = () => {
           <div className="mt-5">
             <img
               className="research_left_Img1"
-              src={`https://admin.bluesurge.com.pk/uploads/${
+              src={`${process.env.REACT_APP_IMAGE_URL}/${
                 productData && productData.detailImage
               }`}
             />
@@ -158,7 +158,7 @@ const ProductDetail = () => {
               style={{ maxWidth: "100%" }}
             >
               <source
-                src={`https://admin.bluesurge.com.pk/uploads/${productData.video}`}
+                src={`${process.env.REACT_APP_IMAGE_URL}/${productData.video}`}
                 type="video/mp4"
               />
               Your browser does not support the video tag.

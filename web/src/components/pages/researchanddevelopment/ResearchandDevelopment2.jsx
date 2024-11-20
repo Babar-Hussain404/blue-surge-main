@@ -26,7 +26,7 @@ const ResearchandDevelopment2 = ({ headertData, metaTagsData }) => {
 
   const getRDData = async () => {
     try {
-      const response = await axios.get(`https://web.bluesurge.com.pk/rd`);
+      const response = await axios.get(`${process.env.REACT_APP_BASE_URL}/rd`);
       setRDData(response.data.rd || {});
       setcategoriesData(JSON.parse(response.data.rd.research) || {});
       dispatch(technologyData(response.data.rd || {}));
@@ -63,7 +63,7 @@ const ResearchandDevelopment2 = ({ headertData, metaTagsData }) => {
         )}
         backgroundImage={
           headertData?.researchImage === "undefined"
-            ? `https://admin.bluesurge.com.pk/uploads/${headertData.researchImage}`
+            ? `${process.env.REACT_APP_IMAGE_URL}/${headertData.researchImage}`
             : headerImg
         }
         showButton={false}
