@@ -1,6 +1,6 @@
+import React, { useEffect, useState } from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
 import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getResearchToConnectReq, postResearchReq } from "./__requests/RequestResearch";
@@ -14,20 +14,19 @@ const AdminResearchAndDevelopment = () => {
     ourTeamImage: null,
     research: "",
     researchImage: null,
-    test: "",
     technology: "",
     technologyImage: "",
     products: [],
-    categories: [], // Categories with parent and subcategories
   };
 
   const [rdData, setRdData] = useState(initialValue);
+  const [categoriesData, setcategoriesData] = useState(null);
   const [ourTeamImagePreview, setOurTeamImagePreview] = useState(null);
   const [researchImagePreview, setResearchImagePreview] = useState(null);
   const [technologyImagePreview, setTechnologyImagePreview] = useState(null);
   const [newCategory, setNewCategory] = useState({
     parentCategoryName: "",
-    subcategories: [], // Array of subcategories
+    subcategories: [],
   });
   const [newSubcategory, setNewSubcategory] = useState({
     title: "",
@@ -43,21 +42,19 @@ const AdminResearchAndDevelopment = () => {
       try {
         const response = await getResearchToConnectReq();
         setRdData(response.data.rd);
+        setcategoriesData(JSON.parse(response.data.rd.research) || {});
 
         if (response.data.rd.ourTeamImage) {
-          const ourTeamImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.rd.ourTeamImage}`;
-          setOurTeamImagePreview(ourTeamImageUrl);
+          setOurTeamImagePreview(`https://admin.bluesurge.com.pk/uploads/${response.data.rd.ourTeamImage}`);
         }
         if (response.data.rd.researchImage) {
-          const researchImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.rd.researchImage}`;
-          setResearchImagePreview(researchImageUrl);
+          setResearchImagePreview(`https://admin.bluesurge.com.pk/uploads/${response.data.rd.researchImage}`);
         }
         if (response.data.rd.technologyImage) {
-          const technologyImageUrl = `https://admin.bluesurge.com.pk/uploads/${response.data.rd.technologyImage}`;
-          setTechnologyImagePreview(technologyImageUrl);
+          setTechnologyImagePreview(`https://admin.bluesurge.com.pk/uploads/${response.data.rd.technologyImage}`);
         }
       } catch (error) {
-        console.log("error", error);
+        console.error("Error fetching data:", error);
       }
     };
 
@@ -92,7 +89,6 @@ const AdminResearchAndDevelopment = () => {
     }
   };
 
-  // Category and subcategory handling functions
   const handleCategoryChange = (e) => {
     setNewCategory({
       ...newCategory,
@@ -107,7 +103,7 @@ const AdminResearchAndDevelopment = () => {
       reader.onloadend = () => {
         setNewSubcategory({
           ...newSubcategory,
-          image: reader.result, // Set image as Base64 string
+          image: reader.result,
         });
       };
       if (file) {
@@ -122,11 +118,15 @@ const AdminResearchAndDevelopment = () => {
   };
 
   const addSubcategory = () => {
-    setNewCategory({
-      ...newCategory,
-      subcategories: [...newCategory.subcategories, newSubcategory],
-    });
-    setNewSubcategory({ title: "", description: "", image: null });
+    if (newCategory.subcategories.length < 3) {
+      setNewCategory({
+        ...newCategory,
+        subcategories: [...newCategory.subcategories, newSubcategory],
+      });
+      setNewSubcategory({ title: "", description: "", image: null });
+    } else {
+      toast.warning("You can only add up to 3 subcategories per category.");
+    }
   };
 
   const addCategory = () => {
@@ -148,38 +148,35 @@ const AdminResearchAndDevelopment = () => {
     setRdData({ ...rdData, categories: updatedCategories });
   };
 
+  const deleteSubcategory = (categoryIndex, subIndex) => {
+    const updatedCategories = [...rdData.categories];
+    updatedCategories[categoryIndex].subcategories = updatedCategories[categoryIndex].subcategories.filter(
+      (_, i) => i !== subIndex
+    );
+    setRdData({ ...rdData, categories: updatedCategories });
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
+    debugger
     const formData = new FormData();
     formData.append("heading", rdData.heading);
     formData.append("headingParagraph", rdData.headingParagraph);
     formData.append("ourTeam", rdData.ourTeam);
     formData.append("ourTeamDetail", rdData.ourTeamDetail);
     formData.append("ourTeamImage", rdData.ourTeamImage);
-    formData.append("research", rdData.research);
+    formData.append("research", JSON.stringify(rdData.categories));
     formData.append("researchImage", rdData.researchImage);
     formData.append("technology", rdData.technology);
-    formData.append("test", rdData.test);
     formData.append("technologyImage", rdData.technologyImage);
     formData.append("products", rdData.products);
-    debugger
-    // Serialize categories as a JSON string
-    formData.append("categories", JSON.stringify(rdData.categories));
-    // rdData.categories.forEach((category, index) => {
-    //   formData.append(`categories[${index}][parentCategoryName]`, category.parentCategoryName);
-    //   category.subcategories.forEach((sub, subIndex) => {
-    //     formData.append(`categories[${index}][subcategories][${subIndex}][title]`, sub.title);
-    //     formData.append(`categories[${index}][subcategories][${subIndex}][description]`, sub.description);
-    //     formData.append(`categories[${index}][subcategories][${subIndex}][image]`, sub.image);
-    //   });
-    // });
 
     try {
-      const response = await postResearchReq(formData);
+      await postResearchReq(formData);
       toast.success("Research and Development Updated Successfully");
       setErrIdMsg("");
     } catch (error) {
-      console.log("error", error);
+      console.error("Error updating data:", error);
       if (error.response && error.response.status === 400) {
         setErrIdMsg(error.response.data.error);
       }
@@ -188,123 +185,67 @@ const AdminResearchAndDevelopment = () => {
 
   return (
     <>
-      <div 
-      // style={{ height: "100vh" }}
-      id="page-content">
+      <div
+        // style={{ height: "100vh" }}
+        id="page-content">
         {errIdMsg && (
           <div className="error_messages login-title themed-background-fire text-center">
             <p className="text-light">{errIdMsg}</p>
           </div>
         )}
-        <form className="form-horizontal" onSubmit={handleSubmit} style={{marginTop: '40px'}}>
-          <div className="col-md-7">
-            <div>
-              <label>Heading Title</label>
-              <CKEditor
-                editor={ClassicEditor}
-                data={rdData.heading || ""}
-                onChange={(event, editor) => {
-                  const data = editor.getData();
-                  setRdData({ ...rdData, heading: data });
-                }}
-              />
-            </div>
-            <div>
+        <form className="form-horizontal" onSubmit={handleSubmit} style={{ marginTop: '40px' }}>
+            <div className="col-md-12">
+              <div className="col-md-6">
+                <label>Heading Title</label>
+                <CKEditor
+                  editor={ClassicEditor}
+                  data={rdData.heading || ""}
+                  onChange={(event, editor) => {
+                    const data = editor.getData();
+                    setRdData({ ...rdData, heading: data });
+                  }}
+                />
+                <label>Heading Paragraph</label>
+                <CKEditor
+                  editor={ClassicEditor}
+                  data={rdData.headingParagraph || ""}
+                  onChange={(event, editor) => {
+                    const data = editor.getData();
+                    setRdData({ ...rdData, headingParagraph: data });
+                  }}
+                />
+              </div>
+              <div className="col-md-6">
               <label>Research And Development</label>
-              <CKEditor
-                editor={ClassicEditor}
-                data={rdData.technology || ""}
-                onChange={(event, editor) => {
-                  const data = editor.getData();
-                  setRdData({ ...rdData, technology: data });
-                }}
-              />
-            </div>
-            <div>
-              <label>Heading Paragraph</label>
-              <CKEditor
-                editor={ClassicEditor}
-                data={rdData.headingParagraph || ""}
-                onChange={(event, editor) => {
-                  const data = editor.getData();
-                  setRdData({ ...rdData, headingParagraph: data });
-                }}
-              />
-            </div>
-            <div>
-              <label>Innovation Title</label>
-              <CKEditor
-                editor={ClassicEditor}
-                data={rdData.ourTeam || ""}
-                onChange={(event, editor) => {
-                  const data = editor.getData();
-                  setRdData({ ...rdData, ourTeam: data });
-                }}
-              />
-            </div>
-            <div>
-              <label>Innovation Detail</label>
-              <CKEditor
-                editor={ClassicEditor}
-                data={rdData.ourTeamDetail || ""}
-                onChange={(event, editor) => {
-                  const data = editor.getData();
-                  setRdData({ ...rdData, ourTeamDetail: data });
-                }}
-              />
-            </div>
+                <CKEditor
+                  editor={ClassicEditor}
+                  data={rdData.technology || ""}
+                  onChange={(event, editor) => {
+                    const data = editor.getData();
+                    setRdData({ ...rdData, technology: data });
+                  }}
+                />
+                <label>Innovation Title</label>
+                <CKEditor
+                  editor={ClassicEditor}
+                  data={rdData.ourTeam || ""}
+                  onChange={(event, editor) => {
+                    const data = editor.getData();
+                    setRdData({ ...rdData, ourTeam: data });
+                  }}
+                />
+                <label>Innovation Detail</label>
+                <CKEditor
+                  editor={ClassicEditor}
+                  data={rdData.ourTeamDetail || ""}
+                  onChange={(event, editor) => {
+                    const data = editor.getData();
+                    setRdData({ ...rdData, ourTeamDetail: data });
+                  }}
+                />
+              </div>
           </div>
-            <div className="col-md-5">
-              <h4>Categories</h4>
-              {rdData.categories.map((category, index) => (
-                <div key={index}>
-                  <input
-                    type="text"
-                    name="parentCategoryName"
-                    value={category.parentCategoryName}
-                    onChange={(e) =>
-                      updateCategory(index, { ...category, parentCategoryName: e.target.value })
-                    }
-                    placeholder="Parent Category Name"
-                  />
-                  <h5>Subcategories</h5>
-                  {category.subcategories.map((sub, subIndex) => (
-                    <div key={subIndex}>
-                      <input
-                        type="text"
-                        name="title"
-                        value={sub.title}
-                        onChange={(e) =>
-                          updateCategory(index, {
-                            ...category,
-                            subcategories: category.subcategories.map((s, i) =>
-                              i === subIndex ? { ...s, title: e.target.value } : s
-                            ),
-                          })
-                        }
-                        placeholder="Subcategory Title"
-                      />
-                      <textarea
-                        name="description"
-                        value={sub.description}
-                        onChange={(e) =>
-                          updateCategory(index, {
-                            ...category,
-                            subcategories: category.subcategories.map((s, i) =>
-                              i === subIndex ? { ...s, description: e.target.value } : s
-                            ),
-                          })
-                        }
-                        placeholder="Subcategory Description"
-                      />
-                      {sub.image && (
-                        <img src={sub.image} alt="Subcategory Preview" style={{ width: "100px", height: "100px" }} />
-                      )}
-                    </div>
-                  ))}
-                </div>
-              ))}
-              <div>
+          <div className="col-md-12">
                 <h5>Add New Category</h5>
                 <input
                   type="text"
@@ -339,7 +280,65 @@ const AdminResearchAndDevelopment = () => {
                 <button type="button" onClick={addCategory}>
                   Add Category
                 </button>
-              </div>
+          </div>
+          <div className="col-md-12">
+          <h4>Categories</h4>
+              {rdData.categories.map((category, index) => (
+                <div key={index} className="col-md-6" style={{border:'2px black solid', padding:'15px'}}>
+                  <h5>Parent category</h5>
+                  <input
+                    type="text"
+                    name="parentCategoryName"
+                    value={category.parentCategoryName}
+                    onChange={(e) =>
+                      updateCategory(index, { ...category, parentCategoryName: e.target.value })
+                    }
+                    placeholder="Parent Category Name"
+                  />
+                  <hr />
+                  <h5>Subcategories</h5>
+                  {category.subcategories.map((sub, subIndex) => (
+                    <div key={subIndex}>
+                      <input
+                        type="text"
+                        name="title"
+                        value={sub.title}
+                        onChange={(e) =>
+                          updateCategory(index, {
+                            ...category,
+                            subcategories: category.subcategories.map((s, i) =>
+                              i === subIndex ? { ...s, title: e.target.value } : s
+                            ),
+                          })
+                        }
+                        placeholder="Subcategory Title"
+                      />
+                      <textarea
+                        name="description"
+                        value={sub.description}
+                        onChange={(e) =>
+                          updateCategory(index, {
+                            ...category,
+                            subcategories: category.subcategories.map((s, i) =>
+                              i === subIndex ? { ...s, description: e.target.value } : s
+                            ),
+                          })
+                        }
+                        placeholder="Subcategory Description"
+                      />
+                      {sub.image && (
+                        <img src={sub.image} alt="Subcategory Preview" style={{ width: "100px", height: "100px" }} />
+                      )}
+                      <button type="button" onClick={() => deleteSubcategory(index, subIndex)}>
+                        Delete Subcategory
+                      </button>
+                    </div>
+                  ))}
+                  <button type="button" onClick={() => deleteCategory(index)}>
+                    Delete Category
+                  </button>
+                </div>
+              ))}
             </div>
           <button type="submit" className="btn btn-primary">
             Update R&D
