@@ -28,8 +28,7 @@ const ResearchandDevelopment2 = ({ headertData, metaTagsData }) => {
     try {
       const response = await axios.get(`https://web.bluesurge.com.pk/rd`);
       setRDData(response.data.rd || {});
-      setcategoriesData(response.data.rd.categories || {});
-
+      setcategoriesData(JSON.parse(response.data.rd.research) || {});
       dispatch(technologyData(response.data.rd || {}));
       setRDLoading(false);
     } catch (error) {
@@ -136,8 +135,8 @@ const ResearchandDevelopment2 = ({ headertData, metaTagsData }) => {
                                   >
                                     <Card.Img
                                       className="card-img-no-border card-title"
-                                      src={`https://admin.bluesurge.com.pk/uploads/f679e1fb-3980-4f82-ad78-1a95379bc0e7.jpeg`}
-                                      style={{ width: 'auto' }}
+                                      src={`${subcategory.image}`}
+                                      style={{ width: '450px' }}
                                       alt={`${subcategory.title} image`}
                                     />
                                     <Card.Body style={{ display: "flex", flexDirection: "column" }}>
