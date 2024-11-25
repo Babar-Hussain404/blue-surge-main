@@ -41,12 +41,12 @@ const AdminResearchAndDevelopment = () => {
       try {
         const response = await getResearchToConnectReq();
         const researchData = JSON.parse(response.data.rd.research || "[]");
-  
+
         setRdData({
           ...response.data.rd,
           research: Array.isArray(researchData) ? researchData : [], // Ensure it's an array
         });
-  
+
         if (response.data.rd.ourTeamImage) {
           setOurTeamImagePreview(`${process.env.REACT_APP_IMAGE_URL}/uploads/${response.data.rd.ourTeamImage}`);
         }
@@ -60,10 +60,10 @@ const AdminResearchAndDevelopment = () => {
         console.error("Error fetching data:", error);
       }
     };
-  
+
     fetchData();
   }, []);
-  
+
   const handleChange = (e) => {
     if (e.target.type === "file") {
       setRdData({
@@ -195,92 +195,92 @@ const AdminResearchAndDevelopment = () => {
           </div>
         )}
         <form className="form-horizontal" onSubmit={handleSubmit} style={{ marginTop: '40px' }}>
-            <div className="col-md-12">
-              <div className="col-md-6">
-                <label>Heading Title</label>
-                <CKEditor
-                  editor={ClassicEditor}
-                  data={rdData.heading || ""}
-                  onChange={(event, editor) => {
-                    const data = editor.getData();
-                    setRdData({ ...rdData, heading: data });
-                  }}
-                />
-                <label>Heading Paragraph</label>
-                <CKEditor
-                  editor={ClassicEditor}
-                  data={rdData.headingParagraph || ""}
-                  onChange={(event, editor) => {
-                    const data = editor.getData();
-                    setRdData({ ...rdData, headingParagraph: data });
-                  }}
-                />
-              </div>
-              <div className="col-md-6">
+          <div className="col-md-12">
+            <div className="col-md-6">
+              <label>Heading Title</label>
+              <CKEditor
+                editor={ClassicEditor}
+                data={rdData.heading || ""}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  setRdData({ ...rdData, heading: data });
+                }}
+              />
+              <label>Heading Paragraph</label>
+              <CKEditor
+                editor={ClassicEditor}
+                data={rdData.headingParagraph || ""}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  setRdData({ ...rdData, headingParagraph: data });
+                }}
+              />
+            </div>
+            <div className="col-md-6">
               <label>Research And Development</label>
-                <CKEditor
-                  editor={ClassicEditor}
-                  data={rdData.technology || ""}
-                  onChange={(event, editor) => {
-                    const data = editor.getData();
-                    setRdData({ ...rdData, technology: data });
-                  }}
-                />
-                <label>Innovation Title</label>
-                <CKEditor
-                  editor={ClassicEditor}
-                  data={rdData.ourTeam || ""}
-                  onChange={(event, editor) => {
-                    const data = editor.getData();
-                    setRdData({ ...rdData, ourTeam: data });
-                  }}
-                />
-                <label>Innovation Detail</label>
-                <CKEditor
-                  editor={ClassicEditor}
-                  data={rdData.ourTeamDetail || ""}
-                  onChange={(event, editor) => {
-                    const data = editor.getData();
-                    setRdData({ ...rdData, ourTeamDetail: data });
-                  }}
-                />
-              </div>
+              <CKEditor
+                editor={ClassicEditor}
+                data={rdData.technology || ""}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  setRdData({ ...rdData, technology: data });
+                }}
+              />
+              <label>Innovation Title</label>
+              <CKEditor
+                editor={ClassicEditor}
+                data={rdData.ourTeam || ""}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  setRdData({ ...rdData, ourTeam: data });
+                }}
+              />
+              <label>Innovation Detail</label>
+              <CKEditor
+                editor={ClassicEditor}
+                data={rdData.ourTeamDetail || ""}
+                onChange={(event, editor) => {
+                  const data = editor.getData();
+                  setRdData({ ...rdData, ourTeamDetail: data });
+                }}
+              />
+            </div>
           </div>
           <div className="col-md-12">
-                <h5>Add New Category</h5>
-                <input
-                  type="text"
-                  name="parentCategoryName"
-                  value={newCategory.parentCategoryName}
-                  onChange={handleCategoryChange}
-                  placeholder="Parent Category Name"
-                />
-                <h6>Add New Subcategory</h6>
-                <input
-                  type="text"
-                  name="title"
-                  value={newSubcategory.title}
-                  onChange={handleSubcategoryChange}
-                  placeholder="Subcategory Title"
-                />
-                <textarea
-                  name="description"
-                  value={newSubcategory.description}
-                  onChange={handleSubcategoryChange}
-                  placeholder="Subcategory Description"
-                />
-                <input
-                  type="file"
-                  name="image"
-                  onChange={handleSubcategoryChange}
-                  accept="image/*"
-                />
-                <button type="button" onClick={addSubcategory}>
-                  Add Subcategory
-                </button>
-                <button type="button" onClick={addCategory}>
-                  Add Category
-                </button>
+            <h5>Add New Category</h5>
+            <input
+              type="text"
+              name="parentCategoryName"
+              value={newCategory.parentCategoryName}
+              onChange={handleCategoryChange}
+              placeholder="Parent Category Name"
+            />
+            <h6>Add New Subcategory</h6>
+            <input
+              type="text"
+              name="title"
+              value={newSubcategory.title}
+              onChange={handleSubcategoryChange}
+              placeholder="Subcategory Title"
+            />
+            <textarea
+              name="description"
+              value={newSubcategory.description}
+              onChange={handleSubcategoryChange}
+              placeholder="Subcategory Description"
+            />
+            <input
+              type="file"
+              name="image"
+              onChange={handleSubcategoryChange}
+              accept="image/*"
+            />
+            <button type="button" onClick={addSubcategory}>
+              Add Subcategory
+            </button>
+            <button type="button" onClick={addCategory}>
+              Add Category
+            </button>
           </div>
           <div className="col-md-12">
             <h4>Categories</h4>
@@ -296,48 +296,81 @@ const AdminResearchAndDevelopment = () => {
                   }
                   placeholder="Parent Category Name"
                 />
+                <button type="button" className={`btn btn-xs btn-danger`} style={{ margin: '0px 5px' }} onClick={() => deleteCategory(index)}>
+                  <i className="fa fa-times" /> Category
+                </button>
                 <hr />
                 <h5>Subcategories</h5>
                 {category.subcategories.map((sub, subIndex) => (
+
                   <div key={subIndex}>
-                    <input
-                      type="text"
-                      name="title"
-                      value={sub.title}
-                      onChange={(e) =>
-                        updateCategory(index, {
-                          ...category,
-                          subcategories: category.subcategories.map((s, i) =>
-                            i === subIndex ? { ...s, title: e.target.value } : s
-                          ),
-                        })
-                      }
-                      placeholder="Subcategory Title"
-                    />
-                    <textarea
-                      name="description"
-                      value={sub.description}
-                      onChange={(e) =>
-                        updateCategory(index, {
-                          ...category,
-                          subcategories: category.subcategories.map((s, i) =>
-                            i === subIndex ? { ...s, description: e.target.value } : s
-                          ),
-                        })
-                      }
-                      placeholder="Subcategory Description"
-                    />
-                    {sub.image && (
-                      <img src={sub.image} alt="Subcategory Preview" style={{ width: "100px", height: "100px" }} />
-                    )}
-                    <button type="button" onClick={() => deleteSubcategory(index, subIndex)}>
-                      Delete Subcategory
-                    </button>
+                    <table className="table table-bordered" style={{ borderCollapse: "collapse", width: "100%", border: "1px solid black", padding: '5px' }}>
+                      <thead>
+                        <tr>
+                          <th style={{ border: "1px solid black" }}>Name</th>
+                          <th style={{ border: "1px solid black" }}>Description</th>
+                          <th style={{ border: "1px solid black" }}>Image</th>
+                          <th style={{ border: "1px solid black" }}>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td style={{ border: "1px solid black" }}>
+                            <input
+                              type="text"
+                              name="title"
+                              value={sub.title}
+                              placeholder="Subcategory Title"
+                              onChange={(e) =>
+                                updateCategory(index, {
+                                  ...category,
+                                  subcategories: category.subcategories.map((s, i) =>
+                                    i === subIndex ? { ...s, title: e.target.value } : s
+                                  ),
+                                })
+                              }
+                            />
+                          </td>
+                          <td style={{ border: "1px solid black" }}>
+                            <textarea
+                              name="description"
+                              style={{ margin: "0px 5px" }}
+                              value={sub.description}
+                              placeholder="Subcategory Description"
+                              onChange={(e) =>
+                                updateCategory(index, {
+                                  ...category,
+                                  subcategories: category.subcategories.map((s, i) =>
+                                    i === subIndex ? { ...s, description: e.target.value } : s
+                                  ),
+                                })
+                              }
+                            />
+                          </td>
+                          <td style={{ border: "1px solid black" }}>
+                            {sub.image && (
+                              <img
+                                src={sub.image}
+                                alt="Subcategory Preview"
+                                style={{ width: "100px", height: "100px" }}
+                              />
+                            )}
+                          </td>
+                          <td style={{ border: "1px solid black" }}>
+                            <button
+                              type="button"
+                              className={`btn btn-xs btn-danger`}
+                              style={{ margin: "0px 5px" }}
+                              onClick={() => deleteSubcategory(index, subIndex)}
+                            >
+                              <i className="fa fa-times" /> Subcategory
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 ))}
-                <button type="button" onClick={() => deleteCategory(index)}>
-                  Delete Category
-                </button>
               </div>
             ))}
           </div>
