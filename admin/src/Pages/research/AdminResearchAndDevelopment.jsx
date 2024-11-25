@@ -12,7 +12,7 @@ const AdminResearchAndDevelopment = () => {
     ourTeam: "",
     ourTeamDetail: "",
     ourTeamImage: null,
-    research: "",
+    research: "[]", // Stringified JSON for categories
     researchImage: null,
     technology: "",
     technologyImage: "",
@@ -20,7 +20,6 @@ const AdminResearchAndDevelopment = () => {
   };
 
   const [rdData, setRdData] = useState(initialValue);
-  const [categoriesData, setcategoriesData] = useState(null);
   const [ourTeamImagePreview, setOurTeamImagePreview] = useState(null);
   const [researchImagePreview, setResearchImagePreview] = useState(null);
   const [technologyImagePreview, setTechnologyImagePreview] = useState(null);
@@ -41,9 +40,13 @@ const AdminResearchAndDevelopment = () => {
     const fetchData = async () => {
       try {
         const response = await getResearchToConnectReq();
-        setRdData(response.data.rd);
-        setcategoriesData(JSON.parse(response.data.rd.research) || {});
-
+        const researchData = JSON.parse(response.data.rd.research || "[]");
+  
+        setRdData({
+          ...response.data.rd,
+          research: Array.isArray(researchData) ? researchData : [], // Ensure it's an array
+        });
+  
         if (response.data.rd.ourTeamImage) {
           setOurTeamImagePreview(`${process.env.REACT_APP_IMAGE_URL}/uploads/${response.data.rd.ourTeamImage}`);
         }
@@ -57,10 +60,10 @@ const AdminResearchAndDevelopment = () => {
         console.error("Error fetching data:", error);
       }
     };
-
+  
     fetchData();
-  }, [getResearchToConnectReq]);
-
+  }, []);
+  
   const handleChange = (e) => {
     if (e.target.type === "file") {
       setRdData({
@@ -130,42 +133,40 @@ const AdminResearchAndDevelopment = () => {
   };
 
   const addCategory = () => {
-    setRdData({
-      ...rdData,
-      categories: [...rdData.categories, newCategory],
-    });
+    const updatedCategories = [...rdData.research, newCategory];
+    setRdData({ ...rdData, research: updatedCategories });
     setNewCategory({ parentCategoryName: "", subcategories: [] });
   };
 
   const updateCategory = (index, updatedCategory) => {
-    const updatedCategories = [...rdData.categories];
+    const updatedCategories = [...rdData.research];
     updatedCategories[index] = updatedCategory;
-    setRdData({ ...rdData, categories: updatedCategories });
+    setRdData({ ...rdData, research: updatedCategories });
   };
 
   const deleteCategory = (index) => {
-    const updatedCategories = rdData.categories.filter((_, i) => i !== index);
-    setRdData({ ...rdData, categories: updatedCategories });
+    const updatedCategories = rdData.research.filter((_, i) => i !== index);
+    setRdData({ ...rdData, research: updatedCategories });
   };
 
   const deleteSubcategory = (categoryIndex, subIndex) => {
-    const updatedCategories = [...rdData.categories];
+    const updatedCategories = [...rdData.research];
     updatedCategories[categoryIndex].subcategories = updatedCategories[categoryIndex].subcategories.filter(
       (_, i) => i !== subIndex
     );
-    setRdData({ ...rdData, categories: updatedCategories });
+    setRdData({ ...rdData, research: updatedCategories });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    debugger
+
     const formData = new FormData();
     formData.append("heading", rdData.heading);
     formData.append("headingParagraph", rdData.headingParagraph);
     formData.append("ourTeam", rdData.ourTeam);
     formData.append("ourTeamDetail", rdData.ourTeamDetail);
     formData.append("ourTeamImage", rdData.ourTeamImage);
-    formData.append("research", JSON.stringify(rdData.categories));
+    formData.append("research", JSON.stringify(rdData.research)); // Convert to JSON string
     formData.append("researchImage", rdData.researchImage);
     formData.append("technology", rdData.technology);
     formData.append("technologyImage", rdData.technologyImage);
@@ -282,64 +283,64 @@ const AdminResearchAndDevelopment = () => {
                 </button>
           </div>
           <div className="col-md-12">
-          <h4>Categories</h4>
-              {rdData.categories.map((category, index) => (
-                <div key={index} className="col-md-6" style={{border:'2px black solid', padding:'15px'}}>
-                  <h5>Parent category</h5>
-                  <input
-                    type="text"
-                    name="parentCategoryName"
-                    value={category.parentCategoryName}
-                    onChange={(e) =>
-                      updateCategory(index, { ...category, parentCategoryName: e.target.value })
-                    }
-                    placeholder="Parent Category Name"
-                  />
-                  <hr />
-                  <h5>Subcategories</h5>
-                  {category.subcategories.map((sub, subIndex) => (
-                    <div key={subIndex}>
-                      <input
-                        type="text"
-                        name="title"
-                        value={sub.title}
-                        onChange={(e) =>
-                          updateCategory(index, {
-                            ...category,
-                            subcategories: category.subcategories.map((s, i) =>
-                              i === subIndex ? { ...s, title: e.target.value } : s
-                            ),
-                          })
-                        }
-                        placeholder="Subcategory Title"
-                      />
-                      <textarea
-                        name="description"
-                        value={sub.description}
-                        onChange={(e) =>
-                          updateCategory(index, {
-                            ...category,
-                            subcategories: category.subcategories.map((s, i) =>
-                              i === subIndex ? { ...s, description: e.target.value } : s
-                            ),
-                          })
-                        }
-                        placeholder="Subcategory Description"
-                      />
-                      {sub.image && (
-                        <img src={sub.image} alt="Subcategory Preview" style={{ width: "100px", height: "100px" }} />
-                      )}
-                      <button type="button" onClick={() => deleteSubcategory(index, subIndex)}>
-                        Delete Subcategory
-                      </button>
-                    </div>
-                  ))}
-                  <button type="button" onClick={() => deleteCategory(index)}>
-                    Delete Category
-                  </button>
-                </div>
-              ))}
-            </div>
+            <h4>Categories</h4>
+            {Array.isArray(rdData.research) && rdData.research.map((category, index) => (
+              <div key={index} className="col-md-6" style={{ border: '2px black solid', padding: '15px' }}>
+                <h5>Parent category</h5>
+                <input
+                  type="text"
+                  name="parentCategoryName"
+                  value={category.parentCategoryName}
+                  onChange={(e) =>
+                    updateCategory(index, { ...category, parentCategoryName: e.target.value })
+                  }
+                  placeholder="Parent Category Name"
+                />
+                <hr />
+                <h5>Subcategories</h5>
+                {category.subcategories.map((sub, subIndex) => (
+                  <div key={subIndex}>
+                    <input
+                      type="text"
+                      name="title"
+                      value={sub.title}
+                      onChange={(e) =>
+                        updateCategory(index, {
+                          ...category,
+                          subcategories: category.subcategories.map((s, i) =>
+                            i === subIndex ? { ...s, title: e.target.value } : s
+                          ),
+                        })
+                      }
+                      placeholder="Subcategory Title"
+                    />
+                    <textarea
+                      name="description"
+                      value={sub.description}
+                      onChange={(e) =>
+                        updateCategory(index, {
+                          ...category,
+                          subcategories: category.subcategories.map((s, i) =>
+                            i === subIndex ? { ...s, description: e.target.value } : s
+                          ),
+                        })
+                      }
+                      placeholder="Subcategory Description"
+                    />
+                    {sub.image && (
+                      <img src={sub.image} alt="Subcategory Preview" style={{ width: "100px", height: "100px" }} />
+                    )}
+                    <button type="button" onClick={() => deleteSubcategory(index, subIndex)}>
+                      Delete Subcategory
+                    </button>
+                  </div>
+                ))}
+                <button type="button" onClick={() => deleteCategory(index)}>
+                  Delete Category
+                </button>
+              </div>
+            ))}
+          </div>
           <button type="submit" className="btn btn-primary">
             Update R&D
           </button>
